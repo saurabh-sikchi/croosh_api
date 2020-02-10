@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: celeb_known_fors
+#
+#  id           :bigint           not null, primary key
+#  celeb_id     :bigint           not null
+#  known_for_id :bigint           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  celeb: one
+  known_for: one
+
+two:
+  celeb: two
+  known_for: two

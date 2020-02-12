@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       post 'otp/send', to: 'otp_authentication#send_otp'
       post 'otp/verify', to: 'otp_authentication#verify_otp_and_login'
 
-      get 'connect_mode', to: 'user_celebs#connect_mode'
+      get 'user/connect_mode', to: 'user_celebs#connect_mode'
       get 'party_mode', to: 'croosh#party_mode'
 
       post 'croosh/:croosh_id/toggle_user_like', to: 'croosh#toggle_user_like'

@@ -7,7 +7,11 @@ class SmsClient
   
   def self.send_sms(to:, text:)
     return true if Rails.env.development?
-    to = Rails.env.staging? ? '8446251980' : to
+    if Rails.env.staging?
+      if !['8446251980', '9680000596'].include?(to)
+        return true
+      end
+    end
 
     url = URI(API_ENDPOINT)
 

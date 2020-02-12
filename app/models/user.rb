@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   after_create :attach_default_profile_pic
   def attach_default_profile_pic
-    self.profile_pic.attach(io: File.open('lib/avatar-default.jpg'))
+    self.profile_pic.attach(io: File.open('lib/avatar-default.jpg'), filename: 'default.jpg')
   end
 
   def generate_jwt_token

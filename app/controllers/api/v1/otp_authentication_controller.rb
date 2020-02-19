@@ -1,6 +1,7 @@
 class Api::V1::OtpAuthenticationController < ApplicationController
   
   def send_otp
+    puts params
     result = OtpAuthentication.send_to_number(params[:phone_number])
     render json: result, status: 200
   end

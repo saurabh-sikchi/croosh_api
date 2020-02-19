@@ -6,7 +6,7 @@ class SmsClient
   API_ENDPOINT = "https://api.msg91.com/api/v2/sendsms"
   
   def self.send_sms(to:, text:)
-    return true if Rails.env.development? || Rails.env.staging?
+    return true if Rails.env.development?
     if Rails.env.staging?
       if !['8446251980', '9680000596'].include?(to)
         return true

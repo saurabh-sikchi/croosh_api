@@ -33,14 +33,15 @@ class Api::V1::UserCelebsController < ApplicationController
 
   def celeb_profile
     celeb = Celeb.live_only.find(params[:celeb_id])
-    crooshes = celeb.crooshes.inject({}) do |h, croosh|
+    crooshes = celeb.crooshes.inject([]) do |h, croosh|
       video_url = croosh.video.present? ? url_for(croosh.video) : ''
       thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
-      h[croosh.id] = {
+      h.push({
+        croosh_id: croosh.id,
         total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
         thumbnail: thumbnail,
         date: croosh.create_at.strftime('%b %-d, %Y')
-      }
+      })
     end
     profile_video_url = celeb.profile_video.present? ? url_for(celeb.profile_video) : ''
     render json: {

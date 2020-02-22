@@ -20,7 +20,7 @@ class Api::V1::UserCelebsController < ApplicationController
       celebs.each do |celeb|
         link_to_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
         a << {
-          id: celeb.id,
+          celeb_id: celeb.id,
           name: celeb.name,
           nick: celeb.nick,
           rate_per_croosh: celeb.rate_per_croosh,

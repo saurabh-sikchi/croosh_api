@@ -37,9 +37,9 @@ class Api::V1::UserCelebsController < ApplicationController
       video_url = croosh.video.present? ? url_for(croosh.video) : ''
       thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
       h[croosh.id] = {
-        user_likes_count: croosh.user_likes_count,
-        celeb_likes_count: croosh.celeb_likes_count,
-        thumbnail: thumbnail
+        total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
+        thumbnail: thumbnail,
+        date: croosh.create_at.strftime('%b %-d, %Y')
       }
     end
     profile_video_url = celeb.profile_video.present? ? url_for(celeb.profile_video) : ''
@@ -47,7 +47,7 @@ class Api::V1::UserCelebsController < ApplicationController
       celeb_id: celeb.id,
       name: celeb.name,
       profile_video: profile_video_url,
-      known_for: celeb.known_for_as_string,
+      known_for: celeb.known_for,
       rate_per_croosh: celeb.rate_per_croosh,
       crooshes: crooshes,
     }, status: 200

@@ -150,13 +150,33 @@ celebs_data = [
   }
 ]
 
-celebs_data.each do |celeb_data|
-  path_to_file = Rails.root.join('app/assets').join(celeb_data[:image])
-  filename = File.basename(path_to_file)
+known_fors = [
+  'Amazing TV star',
+  "World's greatest wrestler",
+  "Being a friend of Sikchi",
+  "Not known for jack",
+  "Attempting to overthrow the burgeois",
+  "Watching Rick and Morty 17 times",
+  "Being a generally nice person"
+]
 
+celebs_data.each do |celeb_data|
+  path_to_image = Rails.root.join('app/assets').join(celeb_data[:image])
+  image_filename = File.basename(path_to_image)
+
+  
   celeb = Celeb.new(celeb_data.except(:image, :video))
 
-  celeb.pics.attach(io: File.open(path_to_file), filename: filename)
+  celeb.known_for = known_fors[rand(0...known_fors.length)]
+  
+  celeb.pics.attach(io: File.open(path_to_image), filename: image_filename)
+
+  if celeb_data[:video]
+    path_to_video = Rails.root.join('app/assets').join(celeb_data[:video])
+    video_filename = File.basename(path_to_video)
+    celeb.profile_video.attach(io: File.open(path_to_video), filename: video_filename)
+  end
+
 
   celeb.save!
 

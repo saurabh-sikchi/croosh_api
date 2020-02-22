@@ -5,3 +5,159 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+Celeb.destroy_all
+
+celebs_data = [
+  {
+    name: "Priyank Chopra",
+    image: "celebs_seed/celeb-1.jpg",
+    rate_per_croosh: "15000",
+    ready_to_go_live: true,
+    nick: "piggy.chops",
+    video: "celebs_seed/model-1.mp4"
+  },
+  {
+    name: "Nora Fateghi",
+    image: "celebs_seed/celeb-2.jpg",
+    rate_per_croosh: "1500",
+    ready_to_go_live: true,
+    nick: "nora.fatehi",
+    video: "celebs_seed/model-2.mp4"
+  },
+  {
+    name: "Pearl Sharma",
+    image: "celebs_seed/celeb-3.jpg",
+    rate_per_croosh: "5000",
+    ready_to_go_live: true,
+    nick: "iampearl",
+    video: "celebs_seed/model-3.mp4"
+  },
+  {
+    name: "Kid Ink",
+    image: "celebs_seed/celeb-4.jpg",
+    rate_per_croosh: "15000",
+    ready_to_go_live: true,
+    nick: "inky.hashes",
+    video: "celebs_seed/model-4.mp4"
+  },
+  {
+    name: "Badshah",
+    image: "celebs_seed/celeb-5.jpg",
+    rate_per_croosh: " 3000",
+    ready_to_go_live: true,
+    nick: "jumpingkiddo"
+  },
+  {
+    name: "Yami Gautam",
+    image: "celebs_seed/celeb-6.jpg",
+    rate_per_croosh: "15000",
+    ready_to_go_live: true,
+    nick: "yami.gautam"
+  },
+  {
+    name: "Nayak Chopra",
+    image: "celebs_seed/celeb-7.jpg",
+    rate_per_croosh: "15000",
+    ready_to_go_live: true,
+    nick: "nyka.c"
+  },
+  {
+    name: "Katrina kaif",
+    image: "celebs_seed/celeb-8.jpg",
+    rate_per_croosh: "1500",
+    ready_to_go_live: true,
+    nick: "kat.kaif"
+  },
+  {
+    name: "Disha Patani",
+    image: "celebs_seed/celeb-9.jpg",
+    rate_per_croosh: " 1000",
+    ready_to_go_live: true,
+    nick: "love.dogs"
+  },
+  {
+    name: "Anushka Shetty",
+    image: "celebs_seed/celeb-10.jpg",
+    rate_per_croosh: "2500",
+    ready_to_go_live: true,
+    nick: "anushka.shetty"
+  },
+  {
+    name: "Alia Bhatt",
+    image: "celebs_seed/celeb-11.jpg",
+    rate_per_croosh: "5000",
+    ready_to_go_live: true,
+    nick: "bhatt.alia",
+    video: "celebs_seed/model-11.mp4"
+  },
+  {
+    name: "Sonal Chauhan",
+    image: "celebs_seed/celeb-12.jpg",
+    rate_per_croosh: "2000",
+    ready_to_go_live: true,
+    nick: "rajput.sonal"
+  },
+  {
+    name: "Shirley Setia",
+    image: "celebs_seed/celeb-13.jpg",
+    rate_per_croosh: "9500",
+    ready_to_go_live: true,
+    nick: "setia.cute"
+  },
+  {
+    name: "Dharshan Raval",
+    image: "celebs_seed/celeb-14.jpg",
+    rate_per_croosh: "4000",
+    ready_to_go_live: true,
+    nick: "dharshan.raval"
+  },
+  {
+    name: "Kiara Advani",
+    image: "celebs_seed/celeb-15.jpg",
+    rate_per_croosh: "3000",
+    ready_to_go_live: true,
+    nick: "kiara.advani"
+  },
+  {
+    name: "Priyank Chopra",
+    image: "celebs_seed/celeb-16.jpg",
+    rate_per_croosh: "15000",
+    ready_to_go_live: true,
+    nick: "piggy.chops"
+  },
+  {
+    name: "Virat Kohli",
+    image: "celebs_seed/celeb-17.jpg",
+    rate_per_croosh: "150000",
+    ready_to_go_live: true,
+    nick: "viral.kohli"
+  },
+  {
+    name: "Manish Pandey",
+    image: "celebs_seed/celeb-18.jpg",
+    rate_per_croosh: "25000",
+    ready_to_go_live: true,
+    nick: "manish.pandey"
+  },
+  {
+    name: "Hardik Pandya",
+    image: "celebs_seed/celeb-19.jpg",
+    rate_per_croosh: "75000",
+    ready_to_go_live: true,
+    nick: "karke.aaya"
+  }
+]
+
+celebs_data.each do |celeb_data|
+  path_to_file = Rails.root.join('app/assets').join(celeb_data[:image])
+  filename = File.basename(path_to_file)
+
+  celeb = Celeb.new(celeb_data.except(:image, :video))
+
+  celeb.pics.attach(io: File.open(path_to_file), filename: filename)
+
+  celeb.save!
+
+end

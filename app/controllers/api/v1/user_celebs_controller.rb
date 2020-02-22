@@ -32,7 +32,7 @@ class Api::V1::UserCelebsController < ApplicationController
   end
 
   def celeb_profile
-    celeb = Celeb.live_only.find(id: params[:celeb_id])
+    celeb = Celeb.live_only.find(params[:celeb_id])
     crooshes = celeb.crooshes.inject({}) do |h, croosh|
       video_url = croosh.video.present? ? url_for(croosh.video) : ''
       thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''

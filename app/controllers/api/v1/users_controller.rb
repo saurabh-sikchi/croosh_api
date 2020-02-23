@@ -6,7 +6,7 @@ class Api::V1::UsersController < ApplicationController
     data = {}.tap do |h|
       crooshes.each do |croosh|
         video_url = croosh.video.present? ? url_for(croosh.video) : ''
-        thumbnail_url = croosh.video.present? ? url_for(croosh.video.thumbnail) : ''
+        thumbnail_url = croosh.video.present? ? url_for(croosh.thumbnail) : ''
         h[croosh.id] = {
           video_url: video_url,
           total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,

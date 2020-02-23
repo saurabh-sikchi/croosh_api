@@ -2,11 +2,11 @@ class Api::V1::UsersController < ApplicationController
   before_action :authenticate_user_request!
 
   def profile
-    crooshes = Croosh.where(user: @current_user).order(created_at: :desc)
+    crooshes = @current_user.crooshes
     data = {}.tap do |h|
       crooshes.each do |croosh|
         video_url = croosh.video.present? ? url_for(croosh.video) : ''
-        thumbnail_url = croosh.v.present? ? url_for(croosh.video.preview) : ''
+        thumbnail_url = croosh.video.present? ? url_for(croosh.video.preview) : ''
         h[croosh.id] = {
           video_url: video_url,
           total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,

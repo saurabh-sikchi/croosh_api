@@ -6,7 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+videos = [
+  "model-1.mp4",
+  "model-2.mp4",
+  "model-3.mp4",
+  "model-4.mp4",
+  "model-11.mp4",
+]
 
+Croosh.destroy_all
 Celeb.destroy_all
 
 celebs_data = [
@@ -180,4 +188,78 @@ celebs_data.each do |celeb_data|
 
   celeb.save!
 
+end
+
+user = User.last
+
+if user
+  croosh_data = [
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "1",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: " 5",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: " 3",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "15",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "15",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "8",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "3",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "15",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "1",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "",
+    },
+    {
+      created_at: "Jun 22, 2020",
+      user_likes_count: "75",
+    }
+  ];
+
+  croosh_data.each do |c|
+    celeb = Celeb.order('RAND()').limit(1).take
+    croosh = Croosh.new(c.except(:image))
+    croosh.celeb = celeb
+    croosh.user = User.last
+    croosh.user_likes_count = 0 if croosh.user_likes_count.nil?
+    v = videos[rand(0...videos.length)]
+
+    path_to_video = Rails.root.join('app/assets/celebs_seed').join(v)
+    video_filename = File.basename(path_to_video)
+    croosh.video.attach(io: File.open(path_to_video), filename: video_filename)
+
+    croosh.save!
+  end
 end

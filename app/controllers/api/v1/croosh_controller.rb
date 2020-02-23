@@ -11,7 +11,7 @@ class Api::V1::CrooshController < ApplicationController
         celeb = croosh.celeb
         celeb_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
         h.push({
-          croosh_id: croosh.id
+          croosh_id: croosh.id,
           video_url: video_url,
           user_likes_count: croosh.user_likes_count,
           celeb_likes_count: croosh.celeb_likes_count,

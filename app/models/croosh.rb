@@ -27,6 +27,6 @@ class Croosh < ApplicationRecord
   end
 
   def thumbnail
-    video.preview
+    video.preview(resize_to_limit: [200, 200])
   end
 end

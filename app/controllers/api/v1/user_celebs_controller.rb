@@ -7,7 +7,7 @@ class Api::V1::UserCelebsController < ApplicationController
     celebs = Celeb.get_random_for_connect_mode(params[:celebs_already_seeen])
     # data = {}.tap do |h|
     #   celebs.each do |celeb|
-    #     link_to_profile_pic = celeb.profile_pic.present? ? rails_blob_path(celeb.profile_pic) : ''
+    #     link_to_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
     #     h[celeb.id] = {
     #       name: celeb.name,
     #       nick: celeb.nick,
@@ -18,7 +18,7 @@ class Api::V1::UserCelebsController < ApplicationController
     # end
     data = [].tap do |a|
       celebs.each do |celeb|
-        link_to_profile_pic = celeb.profile_pic.present? ? rails_blob_path(celeb.profile_pic) : ''
+        link_to_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
         a << {
           celeb_id: celeb.id,
           name: celeb.name,
@@ -34,7 +34,7 @@ class Api::V1::UserCelebsController < ApplicationController
   def celeb_profile
     celeb = Celeb.live_only.find(params[:celeb_id])
     crooshes = celeb.crooshes.inject([]) do |h, croosh|
-      video_url = croosh.video.present? ? rails_blob_path(croosh.video) : ''
+      video_url = croosh.video.present? ? url_for(croosh.video) : ''
       thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
       h.push({
         croosh_id: croosh.id,
@@ -43,7 +43,7 @@ class Api::V1::UserCelebsController < ApplicationController
         date: croosh.created_at.strftime('%b %-d, %Y')
       })
     end
-    profile_video_url = celeb.profile_video.present? ? rails_blob_path(celeb.profile_video) : ''
+    profile_video_url = celeb.profile_video.present? ? url_for(celeb.profile_video) : ''
     render json: {
       celeb_id: celeb.id,
       name: celeb.name,

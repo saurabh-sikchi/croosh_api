@@ -40,7 +40,7 @@ class Api::V1::UserCelebsController < ApplicationController
         croosh_id: croosh.id,
         total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
         thumbnail: thumbnail,
-        date: croosh.create_at.strftime('%b %-d, %Y')
+        date: croosh.created_at.strftime('%b %-d, %Y')
       })
     end
     profile_video_url = celeb.profile_video.present? ? url_for(celeb.profile_video) : ''

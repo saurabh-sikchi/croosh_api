@@ -3,17 +3,18 @@ class Api::V1::UsersController < ApplicationController
 
   def profile
     crooshes = @current_user.crooshes
-    data = {}.tap do |h|
+    data = [].tap do |h|
       crooshes.each do |croosh|
         video_url = croosh.video.present? ? url_for(croosh.video) : ''
         thumbnail_url = croosh.video.present? ? url_for(croosh.thumbnail) : ''
-        h[croosh.id] = {
+        h.push([
+          croosh_id: croosh.id,
           video_url: video_url,
           total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
           date: croosh.created_at,
           celeb_profile_pic: url_for(croosh.celeb.profile_pic),
           thumbnail: thumbnail_url
-        }
+        ])
       end
     end
     render json: { crooshes: data }, status: 200

@@ -8,8 +8,8 @@ class Api::V1::CrooshController < ApplicationController
       crooshes.each do |croosh|
         video_url = croosh.video.present? ? url_for(croosh.video) : ''
         thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
-        celeb_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
         celeb = croosh.celeb
+        celeb_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
         h[croosh.id] = {
           video_url: video_url,
           user_likes_count: croosh.user_likes_count,

@@ -4,13 +4,14 @@ class Api::V1::CrooshController < ApplicationController
 
   def party_mode
     crooshes = Croosh.get_random_for_party_mode(params[:crooshes_already_seen])
-    data = {}.tap do |h|
+    data = [].tap do |h|
       crooshes.each do |croosh|
         video_url = croosh.video.present? ? url_for(croosh.video) : ''
         thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
         celeb = croosh.celeb
         celeb_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
-        h[croosh.id] = {
+        h << [
+          croosh_id: croosh.id
           video_url: video_url,
           user_likes_count: croosh.user_likes_count,
           celeb_likes_count: croosh.celeb_likes_count,
@@ -19,7 +20,7 @@ class Api::V1::CrooshController < ApplicationController
           celeb_nick: celeb.nick,
           celeb_rate_per_croosh: celeb.rate_per_croosh,
           celeb_profile_pic: celeb_profile_pic
-        }
+        ]
       end
     end
     render json: { crooshes: data }, status: 200

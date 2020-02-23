@@ -11,7 +11,7 @@ class Api::V1::UsersController < ApplicationController
           video_url: video_url,
           total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
           date: croosh.created_at,
-          celeb_profile_pic: croosh.celeb.profile_pic,
+          celeb_profile_pic: url_for(croosh.celeb.profile_pic),
           thumbnail: thumbnail_url
         }
       end

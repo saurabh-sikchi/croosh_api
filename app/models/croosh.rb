@@ -29,4 +29,8 @@ class Croosh < ApplicationRecord
   def thumbnail
     video.preview(resize_to_limit: [200, 200])
   end
+
+  def liked_by?(user)
+    user_likes.where(user: user).exists?
+  end
 end

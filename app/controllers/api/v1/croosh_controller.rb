@@ -13,13 +13,13 @@ class Api::V1::CrooshController < ApplicationController
         h.push({
           croosh_id: croosh.id,
           video_url: video_url,
-          user_likes_count: croosh.user_likes_count,
-          celeb_likes_count: croosh.celeb_likes_count,
+          total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
           thumbnail: thumbnail,
           celeb_name: celeb.name,
           celeb_nick: celeb.nick,
           celeb_rate_per_croosh: celeb.rate_per_croosh,
-          celeb_profile_pic: celeb_profile_pic
+          celeb_profile_pic: celeb_profile_pic,
+          liked: croosh.liked_by?(@current_user) ? 1 : 0
         })
       end
     end

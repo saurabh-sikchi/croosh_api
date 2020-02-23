@@ -6,8 +6,8 @@ class Api::V1::CrooshController < ApplicationController
     crooshes = Croosh.get_random_for_party_mode(params[:crooshes_already_seen])
     data = {}.tap do |h|
       crooshes.each do |croosh|
-        video_url = croosh.video.present? ? url_for(croosh.video) : ''
-        thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
+        video_url = croosh.video.present? ? rails_blob_path(croosh.video) : ''
+        thumbnail = croosh.video.present? ? rails_blob_path(croosh.thumbnail) : ''
         h[croosh.id] = {
           video_url: video_url,
           user_likes_count: croosh.user_likes_count,

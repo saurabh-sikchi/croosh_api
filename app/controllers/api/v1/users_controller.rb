@@ -5,14 +5,14 @@ class Api::V1::UsersController < ApplicationController
     crooshes = @current_user.crooshes
     data = [].tap do |h|
       crooshes.each do |croosh|
-        video_url = croosh.video.present? ? url_for(croosh.video) : ''
-        thumbnail_url = croosh.video.present? ? url_for(croosh.thumbnail) : ''
+        video_url = croosh.video.present? ? rails_blob_path(croosh.video) : ''
+        thumbnail_url = croosh.video.present? ? rails_blob_path(croosh.thumbnail) : ''
         h.push([
           croosh_id: croosh.id,
           video_url: video_url,
           total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
           date: croosh.created_at.strftime('%b %-d, %Y'),
-          celeb_profile_pic: url_for(croosh.celeb.profile_pic),
+          celeb_profile_pic: rails_blob_path(croosh.celeb.profile_pic),
           thumbnail: thumbnail_url
         ])
       end
@@ -25,7 +25,7 @@ class Api::V1::UsersController < ApplicationController
     StringIO.new(decoded_image)
 
     @current_user.profile_pic.attach(io: image_io, filename: image_name)
-    render json: { success: true, image_url: url_for(@current_user.profile_pic) }
+    render json: { success: true, image_url: rails_blob_path(@current_user.profile_pic) }
   end
 
   def change_name

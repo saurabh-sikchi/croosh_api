@@ -10,7 +10,7 @@ class Api::V1::CrooshController < ApplicationController
         thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
         celeb = croosh.celeb
         celeb_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
-        h << [
+        h << {
           croosh_id: croosh.id
           video_url: video_url,
           user_likes_count: croosh.user_likes_count,
@@ -20,7 +20,7 @@ class Api::V1::CrooshController < ApplicationController
           celeb_nick: celeb.nick,
           celeb_rate_per_croosh: celeb.rate_per_croosh,
           celeb_profile_pic: celeb_profile_pic
-        ]
+        }
       end
     end
     render json: { crooshes: data }, status: 200

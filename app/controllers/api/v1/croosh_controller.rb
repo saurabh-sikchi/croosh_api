@@ -19,6 +19,7 @@ class Api::V1::CrooshController < ApplicationController
           celeb_nick: celeb.nick,
           celeb_rate_per_croosh: celeb.rate_per_croosh,
           celeb_profile_pic: celeb_profile_pic,
+          celeb_id: celeb.id,
           liked: croosh.liked_by?(@current_user) ? 1 : 0
         })
       end

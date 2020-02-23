@@ -7,7 +7,7 @@ class Api::V1::CrooshController < ApplicationController
     data = {}.tap do |h|
       crooshes.each do |croosh|
         video_url = croosh.video.present? ? rails_blob_path(croosh.video) : ''
-        thumbnail = croosh.video.present? ? rails_blob_path(croosh.thumbnail) : ''
+        thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
         h[croosh.id] = {
           video_url: video_url,
           user_likes_count: croosh.user_likes_count,

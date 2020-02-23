@@ -35,7 +35,7 @@ class Api::V1::UserCelebsController < ApplicationController
     celeb = Celeb.live_only.find(params[:celeb_id])
     crooshes = celeb.crooshes.inject([]) do |h, croosh|
       video_url = croosh.video.present? ? rails_blob_path(croosh.video) : ''
-      thumbnail = croosh.video.present? ? rails_blob_path(croosh.thumbnail) : ''
+      thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
       h.push({
         croosh_id: croosh.id,
         total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,

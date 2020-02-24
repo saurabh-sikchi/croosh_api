@@ -179,6 +179,7 @@ celebs_data.each do |celeb_data|
   celeb = Celeb.new(celeb_data.except(:image, :video))
 
   celeb.known_for = known_fors[rand(0...known_fors.length)]
+  celeb.save!
   
   celeb.pics.attach(io: File.open(path_to_image), filename: image_filename)
 
@@ -187,9 +188,6 @@ celebs_data.each do |celeb_data|
     video_filename = File.basename(path_to_video)
     celeb.profile_video.attach(io: File.open(path_to_video), filename: video_filename)
   end
-
-
-  celeb.save!
 
 end
 
@@ -261,8 +259,8 @@ if user
 
     path_to_video = Rails.root.join('app/assets/celebs_seed').join(v)
     video_filename = File.basename(path_to_video)
+    croosh.save!
     croosh.video.attach(io: File.open(path_to_video), filename: video_filename)
 
-    croosh.save!
   end
 end

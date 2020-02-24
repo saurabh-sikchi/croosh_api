@@ -15,7 +15,10 @@ videos = [
 ]
 
 Croosh.destroy_all
+User.destroy_all
 Celeb.destroy_all
+
+['Rishab J', 'Mankani', 'Sikchi'].each { |name| User.create!(name: name) }
 
 celebs_data = [
   {

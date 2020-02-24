@@ -47,3 +47,5 @@ gem 'capistrano'
 gem 'capistrano-rails'
 gem 'capistrano-passenger'
 gem 'capistrano-rbenv'
+
+gem "mini_magick"

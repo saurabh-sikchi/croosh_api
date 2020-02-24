@@ -193,7 +193,7 @@ celebs_data.each do |celeb_data|
 
 end
 
-user = User.last
+user = User.first
 
 if user
   croosh_data = [

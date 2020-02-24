@@ -27,7 +27,7 @@ class Croosh < ApplicationRecord
   end
 
   def thumbnail
-    video.preview(resize_to_limit: [200, 200])
+    video.preview(resize: "200x200")
   end
 
   def liked_by?(user)

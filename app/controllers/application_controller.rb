@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::API
   require 'json_web_token'
 
+  before_action do
+    ActiveStorage::Current.host = request.base_url
+  end
+
   protected
 
   # Validates the token and user and sets the @current_user scope

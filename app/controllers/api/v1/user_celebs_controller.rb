@@ -1,5 +1,7 @@
 class Api::V1::UserCelebsController < ApplicationController
 
+  include ActionView::Helpers::NumberHelper
+
   before_action :authenticate_user_request!
 
   def connect_mode

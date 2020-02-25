@@ -1,5 +1,7 @@
 class Api::V1::CrooshController < ApplicationController
 
+  include ActionView::Helpers::NumberHelper
+
   before_action :authenticate_user_request!
 
   def party_mode

@@ -9,6 +9,7 @@
 #  ready_to_go_live :boolean          default(FALSE), not null
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
+#  known_for        :text(65535)
 #
 
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

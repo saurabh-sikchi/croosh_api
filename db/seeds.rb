@@ -197,55 +197,42 @@ if user
   croosh_data = [
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "1",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: " 5",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: " 3",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "15",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "15",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "8",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "3",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "15",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "1",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "",
     },
     {
       created_at: "Jun 22, 2020",
-      user_likes_count: "75",
     }
   ];
 

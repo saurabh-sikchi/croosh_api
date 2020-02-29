@@ -5,19 +5,7 @@ class Api::V1::UserCelebsController < ApplicationController
   before_action :authenticate_user_request!
 
   def connect_mode
-    # TODO pagination
-    celebs = Celeb.get_random_for_connect_mode(params[:celebs_already_seeen])
-    # data = {}.tap do |h|
-    #   celebs.each do |celeb|
-    #     link_to_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
-    #     h[celeb.id] = {
-    #       name: celeb.name,
-    #       nick: celeb.nick,
-    #       rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', million: 'm'  } ),
-    #       profile_pic: link_to_profile_pic
-    #     }
-    #   end
-    # end
+    celebs = Celeb.get_for_connect_mode(params[:celebs_already_seeen], params[:sort_order])
     data = [].tap do |a|
       celebs.each do |celeb|
         link_to_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''

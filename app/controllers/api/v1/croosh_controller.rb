@@ -41,4 +41,17 @@ class Api::V1::CrooshController < ApplicationController
     end
   end
 
+  def increment_share
+    croosh = Croosh.find(params[:croosh_id])
+    us = UserShare.find_by(croosh: croosh, user: @current_user)
+    if us.present?
+      us.num += 1
+      us.save
+      render json: { success: true }
+    else
+      UserShare.create(croosh: croosh, user: @current_user, num: 1)
+      render json: { success: true }
+    end
+  end
+
 end

@@ -6,6 +6,7 @@
 #              api_v1_user_connect_mode GET    /api/v1/user/connect_mode(.:format)                                                      api/v1/user_celebs#connect_mode
 #                     api_v1_party_mode GET    /api/v1/party_mode(.:format)                                                             api/v1/croosh#party_mode
 #                                api_v1 POST   /api/v1/croosh/:croosh_id/toggle_user_like(.:format)                                     api/v1/croosh#toggle_user_like
+#                                       POST   /api/v1/croosh/:croosh_id/increment_share(.:format)                                      api/v1/croosh#increment_share
 #                   api_v1_user_profile GET    /api/v1/user/profile(.:format)                                                           api/v1/users#profile
 #        api_v1_user_change_profile_pic POST   /api/v1/user/change_profile_pic(.:format)                                                api/v1/users#change_profile_pic
 #               api_v1_user_change_name POST   /api/v1/user/change_name(.:format)                                                       api/v1/users#change_name
@@ -59,6 +60,7 @@ Rails.application.routes.draw do
       get 'party_mode', to: 'croosh#party_mode'
 
       post 'croosh/:croosh_id/toggle_user_like', to: 'croosh#toggle_user_like'
+      post 'croosh/:croosh_id/increment_share', to: 'croosh#increment_share'
 
       get 'user/profile', to: 'users#profile'
       post 'user/change_profile_pic', to: 'users#change_profile_pic'

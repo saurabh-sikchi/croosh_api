@@ -17,6 +17,7 @@ class Croosh < ApplicationRecord
 
   has_many :user_likes
   has_many :celeb_likes
+  has_many :user_shares
 
   has_one_attached :video
 
@@ -33,4 +34,5 @@ class Croosh < ApplicationRecord
   def liked_by?(user)
     user_likes.where(user: user).exists?
   end
+
 end

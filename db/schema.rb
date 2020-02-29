@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_22_165103) do
+ActiveRecord::Schema.define(version: 2020_02_29_162919) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_02_22_165103) do
     t.integer "celeb_likes_count", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_shares_count", default: 0, null: false
     t.index ["celeb_id"], name: "index_crooshes_on_celeb_id"
     t.index ["user_id"], name: "index_crooshes_on_user_id"
   end
@@ -96,6 +97,16 @@ ActiveRecord::Schema.define(version: 2020_02_22_165103) do
     t.index ["user_id"], name: "index_user_likes_on_user_id"
   end
 
+  create_table "user_shares", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "croosh_id", null: false
+    t.integer "num", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["croosh_id"], name: "index_user_shares_on_croosh_id"
+    t.index ["user_id"], name: "index_user_shares_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -111,4 +122,6 @@ ActiveRecord::Schema.define(version: 2020_02_22_165103) do
   add_foreign_key "crooshes", "users"
   add_foreign_key "user_likes", "crooshes"
   add_foreign_key "user_likes", "users"
+  add_foreign_key "user_shares", "crooshes"
+  add_foreign_key "user_shares", "users"
 end

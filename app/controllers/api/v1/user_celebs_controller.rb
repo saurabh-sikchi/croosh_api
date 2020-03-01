@@ -13,7 +13,7 @@ class Api::V1::UserCelebsController < ApplicationController
           celeb_id: celeb.id,
           name: celeb.name,
           nick: celeb.nick,
-          rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', million: 'm'  } ),
+          rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', lakh: 'l'  } ),
           profile_pic: link_to_profile_pic
         }
       end
@@ -40,7 +40,7 @@ class Api::V1::UserCelebsController < ApplicationController
       name: celeb.name,
       profile_video: profile_video_url,
       known_for: celeb.known_for,
-      rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', million: 'm'  } ),
+      rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', lakh: 'l'  } ),
       crooshes: crooshes,
     }, status: 200
   end

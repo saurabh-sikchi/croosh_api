@@ -19,7 +19,7 @@ class Api::V1::CrooshController < ApplicationController
           thumbnail: thumbnail,
           celeb_name: celeb.name,
           celeb_nick: celeb.nick,
-          celeb_rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', million: 'm'  } ),
+          celeb_rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', lakh: 'l'  } ),
           celeb_profile_pic: celeb_profile_pic,
           celeb_id: celeb.id,
           liked: croosh.liked_by?(@current_user) ? 1 : 0

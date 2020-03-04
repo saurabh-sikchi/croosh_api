@@ -15,9 +15,9 @@ class Croosh < ApplicationRecord
   belongs_to :celeb
   belongs_to :user
 
-  has_many :user_likes
-  has_many :celeb_likes
-  has_many :user_shares
+  has_many :user_likes, dependent: :destroy
+  has_many :celeb_like, dependent: :destroy
+  has_many :user_share, dependent: :destroy
 
   has_one_attached :video
 

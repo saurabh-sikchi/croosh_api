@@ -15,10 +15,9 @@ videos = [
 ]
 
 Croosh.destroy_all
-User.destroy_all
 Celeb.destroy_all
 
-['Rishab J', 'Mankani', 'Sikchi'].each { |name| User.create!(name: name) }
+# ['Rishab J', 'Mankani', 'Sikchi'].each { |name| User.create!(name: name) }
 
 celebs_data = [
   {
@@ -58,42 +57,48 @@ celebs_data = [
     image: "celebs_seed/celeb-5.jpg",
     rate_per_croosh: " 3000",
     ready_to_go_live: true,
-    nick: "jumpingkiddo"
+    nick: "jumpingkiddo",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Yami Gautam",
     image: "celebs_seed/celeb-6.jpg",
     rate_per_croosh: "15000",
     ready_to_go_live: true,
-    nick: "yami.gautam"
+    nick: "yami.gautam",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Nayak Chopra",
     image: "celebs_seed/celeb-7.jpg",
     rate_per_croosh: "15000",
     ready_to_go_live: true,
-    nick: "nyka.c"
+    nick: "nyka.c",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Katrina kaif",
     image: "celebs_seed/celeb-8.jpg",
     rate_per_croosh: "1500",
     ready_to_go_live: true,
-    nick: "kat.kaif"
+    nick: "kat.kaif",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Disha Patani",
     image: "celebs_seed/celeb-9.jpg",
     rate_per_croosh: " 1000",
     ready_to_go_live: true,
-    nick: "love.dogs"
+    nick: "love.dogs",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Anushka Shetty",
     image: "celebs_seed/celeb-10.jpg",
     rate_per_croosh: "2500",
     ready_to_go_live: true,
-    nick: "anushka.shetty"
+    nick: "anushka.shetty",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Alia Bhatt",
@@ -108,56 +113,64 @@ celebs_data = [
     image: "celebs_seed/celeb-12.jpg",
     rate_per_croosh: "2000",
     ready_to_go_live: true,
-    nick: "rajput.sonal"
+    nick: "rajput.sonal",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Shirley Setia",
     image: "celebs_seed/celeb-13.jpg",
     rate_per_croosh: "9500",
     ready_to_go_live: true,
-    nick: "setia.cute"
+    nick: "setia.cute",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Dharshan Raval",
     image: "celebs_seed/celeb-14.jpg",
     rate_per_croosh: "4000",
     ready_to_go_live: true,
-    nick: "dharshan.raval"
+    nick: "dharshan.raval",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Kiara Advani",
     image: "celebs_seed/celeb-15.jpg",
     rate_per_croosh: "3000",
     ready_to_go_live: true,
-    nick: "kiara.advani"
+    nick: "kiara.advani",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Priyank Chopra",
     image: "celebs_seed/celeb-16.jpg",
     rate_per_croosh: "15000",
     ready_to_go_live: true,
-    nick: "piggy.chops"
+    nick: "piggy.chops",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Virat Kohli",
     image: "celebs_seed/celeb-17.jpg",
     rate_per_croosh: "150000",
     ready_to_go_live: true,
-    nick: "viral.kohli"
+    nick: "viral.kohli",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Manish Pandey",
     image: "celebs_seed/celeb-18.jpg",
     rate_per_croosh: "25000",
     ready_to_go_live: true,
-    nick: "manish.pandey"
+    nick: "manish.pandey",
+    video: "celebs_seed/model-1.mp4"
   },
   {
     name: "Hardik Pandya",
     image: "celebs_seed/celeb-19.jpg",
     rate_per_croosh: "75000",
     ready_to_go_live: true,
-    nick: "karke.aaya"
+    nick: "karke.aaya",
+    video: "celebs_seed/model-1.mp4"
   }
 ]
 

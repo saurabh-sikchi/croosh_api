@@ -21,9 +21,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def change_profile_pic
-    decoded_image = Base64.decode64(params[:image])
-    StringIO.new(decoded_image)
-
     @current_user.profile_pic.attach(io: image_io, filename: image_name)
     render json: { success: true, image_url: url_for(@current_user.profile_pic) }
   end

@@ -8,10 +8,10 @@ class Api::V1::CrooshController < ApplicationController
     crooshes = Croosh.get_random_for_party_mode(params[:crooshes_already_seen])
     data = [].tap do |h|
       crooshes.each do |croosh|
-        video_url = croosh.video.present? ? url_for(croosh.video) : ''
-        thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
+        video_url = asset_url(croosh.video)
+        thumbnail = asset_url(croosh.thumbnail)
         celeb = croosh.celeb
-        celeb_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
+        celeb_profile_pic = asset_url(celeb.profile_pic)
         h.push({
           croosh_id: croosh.id,
           video_url: video_url,

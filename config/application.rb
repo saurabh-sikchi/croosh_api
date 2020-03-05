@@ -34,5 +34,7 @@ module CrooshApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.time_zone = 'Mumbai'
+
+    config.cdn_host = "d3cz03zi0ohvtt.cloudfront.net/"
   end
 end

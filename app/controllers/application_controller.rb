@@ -22,6 +22,16 @@ class ApplicationController < ActionController::API
     render json: { error: 'Unauthenticated Request' }, status: :unauthorized
   end
 
+  def asset_url(active_storage_attachment)
+    return '' unless active_storage_attachment.present?
+    if Rails.env.development?
+      return url_for(active_storage_attachment)
+    else
+      h = Rails.application.config.cdn_host
+      return "#{h}#{active_storage_attachment.key}"
+    end
+  end
+
   private
 
   # Deconstructs the Authorization header and decodes the JWT token.

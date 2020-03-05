@@ -8,7 +8,7 @@ class Api::V1::UserCelebsController < ApplicationController
     celebs = Celeb.get_for_connect_mode(params[:celebs_already_seeen], params[:sort_order])
     data = [].tap do |a|
       celebs.each do |celeb|
-        link_to_profile_pic = celeb.profile_pic.present? ? url_for(celeb.profile_pic) : ''
+        link_to_profile_pic = asset_url(celeb.profile_pic)
         a << {
           celeb_id: celeb.id,
           name: celeb.name,
@@ -24,8 +24,8 @@ class Api::V1::UserCelebsController < ApplicationController
   def celeb_profile
     celeb = Celeb.live_only.find(params[:celeb_id])
     crooshes = celeb.crooshes.inject([]) do |h, croosh|
-      video_url = croosh.video.present? ? url_for(croosh.video) : ''
-      thumbnail = croosh.video.present? ? url_for(croosh.thumbnail) : ''
+      video_url = asset_url(croosh.video)
+      thumbnail = asset_url(croosh.thumbnail)
       h.push({
         croosh_id: croosh.id,
         total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
@@ -34,7 +34,7 @@ class Api::V1::UserCelebsController < ApplicationController
         video_url: video_url,
       })
     end
-    profile_video_url = celeb.profile_video.present? ? url_for(celeb.profile_video) : ''
+    profile_video_url = asset_url(celeb.profile_video)
     render json: {
       celeb_id: celeb.id,
       name: celeb.name,

@@ -22,13 +22,13 @@ class ApplicationController < ActionController::API
     render json: { error: 'Unauthenticated Request' }, status: :unauthorized
   end
 
-  def asset_url(active_storage_attachment)
-    return '' unless active_storage_attachment.present?
-    if Rails.env.development?
-      return url_for(active_storage_attachment)
+  def asset_url(active_storage_obj)
+    return '' unless active_storage_obj.present?
+    if Rails.env.development? || !active_storage_obj.respond_to?(:key)
+      return url_for(active_storage_obj)
     else
       h = Rails.application.config.cdn_host
-      return "#{h}#{active_storage_attachment.key}"
+      return "#{h}#{active_storage_obj.key}"
     end
   end
 

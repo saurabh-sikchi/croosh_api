@@ -35,6 +35,6 @@ module CrooshApi
     config.api_only = true
     config.time_zone = 'Mumbai'
 
-    config.cdn_host = "d3cz03zi0ohvtt.cloudfront.net/"
+    config.cdn_host = "https://d3cz03zi0ohvtt.cloudfront.net/"
   end
 end

@@ -19,7 +19,7 @@ class Croosh < ApplicationRecord
   has_many :celeb_like, dependent: :destroy
   has_many :user_share, dependent: :destroy
 
-  has_one_attached :video
+  has_one_attached :video, dependent: :purge
 
   scope :exclude, ->(ids) { where.not(id: ids) }
 

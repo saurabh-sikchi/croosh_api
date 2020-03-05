@@ -10,7 +10,7 @@
 
 class User < ApplicationRecord
 
-  has_one_attached :profile_pic
+  has_one_attached :profile_pic, dependent: :purge
   has_many :crooshes, -> { order(created_at: :desc) }
 
   after_create :attach_default_profile_pic

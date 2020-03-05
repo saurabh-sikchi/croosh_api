@@ -17,8 +17,8 @@ class Celeb < ApplicationRecord
   validates :nick, presence: true
   validates :rate_per_croosh, numericality: { greater_than: 0 }
 
-  has_many_attached :pics
-  has_one_attached :profile_video
+  has_many_attached :pics, dependent: :purge
+  has_one_attached :profile_video, dependent: :purge
 
   has_many :crooshes
   has_many :celeb_known_fors

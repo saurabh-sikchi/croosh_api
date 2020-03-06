@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
         ])
       end
     end
-    render json: { crooshes: data }, status: 200
+    render json: { user_name: @current_user.name, crooshes: data }, status: 200
   end
 
   def change_profile_pic

@@ -33,8 +33,11 @@ class Croosh < ApplicationRecord
   end
 
   def thumbnail
-    return nil unless video.present?
-    video.preview(resize: "200x200")
+    if video.present?
+      return video.preview(resize: "200x200")
+    else
+      return celeb.profile_pic
+    end
   end
 
   def liked_by?(user)

@@ -34,6 +34,7 @@ class Api::V1::UserCelebsController < ApplicationController
         date: croosh.created_at.strftime('%b %-d, %Y'),
         video_url: video_url,
         updates: updates,
+        is_request: croosh.is_request?,
       })
     end
     profile_video_url = asset_url(celeb.profile_video)

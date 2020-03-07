@@ -15,7 +15,8 @@ class Api::V1::UsersController < ApplicationController
           date: croosh.created_at.strftime('%b %-d, %Y'),
           celeb_profile_pic: asset_url(croosh.celeb.profile_pic),
           thumbnail: thumbnail_url,
-          updates: updates
+          updates: updates,
+          is_request: croosh.is_request?,
         ])
       end
     end

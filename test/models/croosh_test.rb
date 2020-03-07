@@ -9,6 +9,8 @@
 #  celeb_likes_count :integer          default(0), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  user_shares_count :integer          default(0), not null
+#  is_request        :boolean          default(FALSE), not null
 #
 
 require 'test_helper'

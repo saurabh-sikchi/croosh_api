@@ -5,7 +5,7 @@
 #  id         :bigint           not null, primary key
 #  user_id    :bigint           not null
 #  croosh_id  :bigint           not null
-#  num        :integer          default(1), not null
+#  num        :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

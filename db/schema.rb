@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_29_162919) do
+ActiveRecord::Schema.define(version: 2020_03_07_165127) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
@@ -61,6 +61,12 @@ ActiveRecord::Schema.define(version: 2020_02_29_162919) do
     t.text "known_for"
   end
 
+  create_table "croosh_updates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "croosh_id", null: false
+    t.text "update_text"
+    t.index ["croosh_id"], name: "index_croosh_updates_on_croosh_id"
+  end
+
   create_table "crooshes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "celeb_id", null: false
     t.bigint "user_id", null: false
@@ -69,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_162919) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_shares_count", default: 0, null: false
+    t.boolean "is_request", default: false, null: false
     t.index ["celeb_id"], name: "index_crooshes_on_celeb_id"
     t.index ["user_id"], name: "index_crooshes_on_user_id"
   end
@@ -118,6 +125,7 @@ ActiveRecord::Schema.define(version: 2020_02_29_162919) do
   add_foreign_key "celeb_known_fors", "known_fors"
   add_foreign_key "celeb_likes", "celebs"
   add_foreign_key "celeb_likes", "crooshes"
+  add_foreign_key "croosh_updates", "crooshes"
   add_foreign_key "crooshes", "celebs"
   add_foreign_key "crooshes", "users"
   add_foreign_key "user_likes", "crooshes"

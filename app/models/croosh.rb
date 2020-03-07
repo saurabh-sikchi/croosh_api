@@ -9,6 +9,8 @@
 #  celeb_likes_count :integer          default(0), not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  user_shares_count :integer          default(0), not null
+#  is_request        :boolean          default(FALSE), not null
 #
 
 class Croosh < ApplicationRecord
@@ -21,13 +23,17 @@ class Croosh < ApplicationRecord
 
   has_one_attached :video, dependent: :purge
 
+  has_many :croosh_updates, dependent: :destroy
+
   scope :exclude, ->(ids) { where.not(id: ids) }
+  scope :not_requests, -> { where(is_request: false) }
 
   def self.get_random_for_party_mode(crooshes_already_seen = [])
-    celebs = self.exclude(crooshes_already_seen).order('RAND()')
+    celebs = self.not_requests.exclude(crooshes_already_seen).order('RAND()')
   end
 
   def thumbnail
+    return nil unless video.present?
     video.preview(resize: "200x200")
   end
 

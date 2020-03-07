@@ -263,4 +263,19 @@ if user
     croosh.video.attach(io: File.open(path_to_video), filename: video_filename)
 
   end
+
+  User.all.each do |user|
+    3.times do
+      celeb = Celeb.order('RAND()').limit(1).take
+      croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0)
+      croosh.save!
+      [
+        "Request has been sent to #{celeb.name} and we'll keep you posted. Happy Crooshin'!",
+        "#{celeb.name} has accepted the croosh request and we’ll be expecting a croosh soon. Happy crooshin’!",
+        "#{celeb.name} is caught up with some other work at moment, we'll follow up. Relax.",
+      ].each do |update_text|
+        croosh_update = CrooshUpdate.create!(update_text: update_text, croosh: croosh)
+      end
+    end
+  end
 end

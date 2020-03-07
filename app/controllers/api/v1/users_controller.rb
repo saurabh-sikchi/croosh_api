@@ -7,13 +7,15 @@ class Api::V1::UsersController < ApplicationController
       crooshes.each do |croosh|
         video_url = asset_url(croosh.video)
         thumbnail_url = asset_url(croosh.thumbnail)
+        updates = croosh.croosh_updates.map(&:update_text)
         h.push([
           croosh_id: croosh.id,
           video_url: video_url,
           total_likes_count: croosh.user_likes_count + croosh.celeb_likes_count,
           date: croosh.created_at.strftime('%b %-d, %Y'),
           celeb_profile_pic: asset_url(croosh.celeb.profile_pic),
-          thumbnail: thumbnail_url
+          thumbnail: thumbnail_url,
+          updates: updates
         ])
       end
     end

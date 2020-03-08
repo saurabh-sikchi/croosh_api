@@ -10,7 +10,7 @@ class Api::V1::CelebConnectController < ApplicationController
         croosh_id: croosh.id,
         image: asset_url(croosh.user.profile_pic),
         notificationCount: 1+rm_inputs.count,
-        date: croosh.to_complete_date.strftime('%b %-d, %Y'),
+        date: croosh.to_complete_date.try(:strftime, '%b %-d, %Y'),
         completed: !croosh.is_request?,
         requestorName: croosh.user.name,
         request: croosh.request_text,

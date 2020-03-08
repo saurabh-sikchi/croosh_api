@@ -261,7 +261,7 @@ if user
   User.all.each do |user|
     3.times do
       celeb = Celeb.order('RAND()').limit(1).take
-      croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0)
+      croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0, to_complete_date: (Date.today+15.days), request_text: "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything.")
       croosh.save!
       [
         "Request has been sent to #{celeb.name} and we'll keep you posted. Happy Crooshin'!",
@@ -269,6 +269,12 @@ if user
         "#{celeb.name} is caught up with some other work at moment, we'll follow up. Relax.",
       ].each do |update_text|
         croosh_update = CrooshUpdate.create!(update_text: update_text, croosh: croosh)
+      end
+      [
+        "The guy also requested if you can talk about a surprise he’s planning for her other then this croosh",
+        "Her name is Kiya and she'll be turning 26",
+      ].each do |rm_input_text|
+        RmInput.create!(croosh: croosh, input_text: rm_input_text, name: "Nitin")
       end
     end
   end

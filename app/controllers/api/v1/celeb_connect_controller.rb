@@ -36,5 +36,4 @@ class CelebConnectController < Api::V1::ApplicationController
       rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', lakh: 'l'  } ),
     }, status: 200
   end
-  end
 end

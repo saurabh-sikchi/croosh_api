@@ -7,13 +7,14 @@ class Api::V1::CelebConnectController < ApplicationController
       video_url = asset_url(croosh.video)
       thumbnail = asset_url(croosh.thumbnail)
       h.push({
+        croosh_id: croosh.id,
         image: asset_url(croosh.user.profile_pic),
         notificationCount: 1+rm_inputs.count,
-        date: croosh.to_complete_date,
+        date: croosh.to_complete_date.strftime('%b %-d, %Y'),
         completed: !croosh.is_request?,
         requestorName: croosh.user.name,
         request: croosh.request_text,
-        rmInputs: croosh.rm_inputs.pluck(&:input_text),
+        rmInputs: croosh.rm_inputs.pluck(:input_text),
         rmName: (croosh.rm_inputs.last.try(:name) || ''),
         croosh_video_url: video_url,
         thumbnail: thumbnail

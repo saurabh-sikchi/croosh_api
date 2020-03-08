@@ -24,7 +24,7 @@ class Api::V1::UserCelebsController < ApplicationController
 
   def celeb_profile
     celeb = Celeb.live_only.find(params[:celeb_id])
-    crooshes = celeb.not_requests.crooshes.inject([]) do |h, croosh|
+    crooshes = celeb.crooshes.not_requests.inject([]) do |h, croosh|
       video_url = asset_url(croosh.video)
       thumbnail = asset_url(croosh.thumbnail)
       updates = croosh.croosh_updates.map(&:update_text)

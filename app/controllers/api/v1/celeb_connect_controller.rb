@@ -7,7 +7,7 @@ class Api::V1::CelebConnectController < ApplicationController
       video_url = asset_url(croosh.video)
       thumbnail = asset_url(croosh.thumbnail)
       h.push({
-        image: asset_url(user.profile_pic),
+        image: asset_url(croosh.user.profile_pic),
         notificationCount: 1+rm_inputs.count,
         date: croosh.to_complete_date,
         completed: !croosh.is_request?,

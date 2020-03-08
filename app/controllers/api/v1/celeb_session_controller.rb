@@ -1,4 +1,4 @@
-class CelebSessionController < ApplicationController
+class Api::V1::CelebSessionController < ApplicationController
 
   def create
     celeb = Celeb.find_by(nick: params[:nick]).try(:authenticate, params[:password])

@@ -247,6 +247,7 @@ if user
     celeb = Celeb.order('RAND()').limit(1).take
     croosh = Croosh.new(c.except(:image))
     croosh.celeb = celeb
+    croosh.to_complete_date = Date.today - 2.days
     croosh.user = User.last
     croosh.user_likes_count = 0 if croosh.user_likes_count.nil?
     v = videos[rand(0...videos.length)]

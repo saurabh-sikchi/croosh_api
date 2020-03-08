@@ -15,7 +15,7 @@ class Api::V1::CelebConnectController < ApplicationController
         request: croosh.request_text,
         rmInputs: croosh.rm_inputs.pluck(&:input_text),
         rmName: (croosh.rm_inputs.last.try(:name) || ''),
-        video_url: video_url,
+        croosh_video_url: video_url,
         thumbnail: thumbnail
       })
     end

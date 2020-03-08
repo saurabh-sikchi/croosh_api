@@ -74,6 +74,8 @@ Rails.application.routes.draw do
 
       get 'celeb_connect/index'
 
+      get 'celeb_connect/show'
+
     end
   end
 end

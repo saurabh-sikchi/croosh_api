@@ -31,10 +31,9 @@ class Api::V1::CelebConnectController < ApplicationController
     profile_video_url = asset_url(celeb.profile_video)
     render json: {
       celeb_id: celeb.id,
-      name: celeb.name,
-      profile_video: profile_video_url,
-      known_for: celeb.known_for,
-      rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', lakh: 'l'  } ),
+      title: celeb.name,
+      id: celeb.nick,
+      amount: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', lakh: 'l'  } ),
     }, status: 200
   end
 end

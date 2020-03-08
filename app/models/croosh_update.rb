@@ -2,9 +2,9 @@
 #
 # Table name: croosh_updates
 #
-#  id        :bigint           not null, primary key
-#  croosh_id :bigint           not null
-#  update    :text(65535)
+#  id          :bigint           not null, primary key
+#  croosh_id   :bigint           not null
+#  update_text :text(65535)
 #
 
 class CrooshUpdate < ApplicationRecord

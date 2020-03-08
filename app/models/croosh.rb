@@ -11,6 +11,8 @@
 #  updated_at        :datetime         not null
 #  user_shares_count :integer          default(0), not null
 #  is_request        :boolean          default(FALSE), not null
+#  request_text      :text(65535)
+#  to_complete_date  :date
 #
 
 class Croosh < ApplicationRecord
@@ -24,6 +26,7 @@ class Croosh < ApplicationRecord
   has_one_attached :video, dependent: :purge
 
   has_many :croosh_updates, dependent: :destroy
+  has_many :rm_inputs, dependent: :destroy
 
   scope :exclude, ->(ids) { where.not(id: ids) }
   scope :not_requests, -> { where(is_request: false) }

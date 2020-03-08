@@ -11,6 +11,8 @@
 #  updated_at        :datetime         not null
 #  user_shares_count :integer          default(0), not null
 #  is_request        :boolean          default(FALSE), not null
+#  request_text      :text(65535)
+#  to_complete_date  :date
 #
 
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

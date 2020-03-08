@@ -2,7 +2,8 @@ class Api::V1::UserCelebsController < ApplicationController
 
   include ActionView::Helpers::NumberHelper
 
-  before_action :authenticate_user_request!
+  before_action :authenticate_user_request!, except: :celeb_profile
+  before_action :authenticate_user_or_celeb_request!, only: :celeb_profile
 
   def connect_mode
     celebs = Celeb.get_for_connect_mode(params[:celebs_already_seeen], params[:sort_order])
@@ -23,7 +24,7 @@ class Api::V1::UserCelebsController < ApplicationController
 
   def celeb_profile
     celeb = Celeb.live_only.find(params[:celeb_id])
-    crooshes = celeb.crooshes.inject([]) do |h, croosh|
+    crooshes = celeb.not_requests.crooshes.inject([]) do |h, croosh|
       video_url = asset_url(croosh.video)
       thumbnail = asset_url(croosh.thumbnail)
       updates = croosh.croosh_updates.map(&:update_text)

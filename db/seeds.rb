@@ -141,14 +141,6 @@ celebs_data = [
     video: "celebs_seed/model-1.mp4"
   },
   {
-    name: "Priyank Chopra",
-    image: "celebs_seed/celeb-16.jpg",
-    rate_per_croosh: "15000",
-    ready_to_go_live: true,
-    nick: "piggy.chops",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
     name: "Virat Kohli",
     image: "celebs_seed/celeb-17.jpg",
     rate_per_croosh: "150000",
@@ -192,6 +184,8 @@ celebs_data.each do |celeb_data|
   celeb = Celeb.new(celeb_data.except(:image, :video))
 
   celeb.known_for = known_fors[rand(0...known_fors.length)]
+  celeb.password = 'password123'
+  celeb.password_confirmation = 'password123'
   celeb.save!
   
   celeb.pics.attach(io: File.open(path_to_image), filename: image_filename)

@@ -11,6 +11,8 @@
 #        api_v1_user_change_profile_pic POST   /api/v1/user/change_profile_pic(.:format)                                                api/v1/users#change_profile_pic
 #               api_v1_user_change_name POST   /api/v1/user/change_name(.:format)                                                       api/v1/users#change_name
 #                                       GET    /api/v1/celeb/:celeb_id/profile(.:format)                                                api/v1/user_celebs#celeb_profile
+#           api_v1_celeb_session_create POST   /api/v1/celeb_session/create(.:format)                                                   api/v1/celeb_session#create
+#            api_v1_celeb_connect_index GET    /api/v1/celeb_connect/index(.:format)                                                    api/v1/celeb_connect#index
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
@@ -67,6 +69,10 @@ Rails.application.routes.draw do
       post 'user/change_name', to: 'users#change_name'
 
       get 'celeb/:celeb_id/profile', to: 'user_celebs#celeb_profile'
+
+      post 'celeb_session/create', to: 'celeb_session#create'
+
+      get 'celeb_connect/index'
 
     end
   end

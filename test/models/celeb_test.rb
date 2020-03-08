@@ -10,6 +10,7 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  known_for        :text(65535)
+#  password_digest  :string(255)
 #
 
 require 'test_helper'

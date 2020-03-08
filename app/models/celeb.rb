@@ -10,11 +10,12 @@
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #  known_for        :text(65535)
+#  password_digest  :string(255)
 #
 
 class Celeb < ApplicationRecord
   validates :name, presence: true
-  validates :nick, presence: true
+  validates :nick, presence: true, uniqueness: true
   validates :rate_per_croosh, numericality: { greater_than: 0 }
 
   has_many_attached :pics, dependent: :purge
@@ -23,6 +24,8 @@ class Celeb < ApplicationRecord
   has_many :crooshes
   has_many :celeb_known_fors
   has_many :known_fors, through: :celeb_known_fors
+
+  has_secure_password
 
   scope :exclude, ->(ids) { where.not(id: ids) }
   scope :live_only, -> { where(ready_to_go_live: true) }
@@ -47,5 +50,9 @@ class Celeb < ApplicationRecord
 
   def known_for_as_string
     known_fors.pluck(:name).join(', ')
+  end
+
+  def generate_jwt_token
+    return JsonWebToken.encode({ celeb_id: id })
   end
 end

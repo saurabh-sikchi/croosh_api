@@ -17,6 +17,25 @@ class ApplicationController < ActionController::API
     invalid_authentication unless @current_user
   end
 
+  def authenticate_celeb_request!
+    if !payload || !JsonWebToken.valid_payload?(payload.first)
+      return invalid_authentication
+    end
+
+    load_current_celeb!
+    invalid_authentication unless @current_celeb
+  end
+
+  def authenticate_user_or_celeb_request!
+    if !payload || !JsonWebToken.valid_payload?(payload.first)
+      return invalid_authentication
+    end
+
+    load_current_celeb!
+    load_current_user!
+    invalid_authentication unless @current_celeb || @current_user
+  end
+
   # Returns 401 response. To handle malformed / invalid requests.
   def invalid_authentication
     render json: { error: 'Unauthenticated Request' }, status: :unauthorized
@@ -45,5 +64,9 @@ class ApplicationController < ActionController::API
   # Sets the @current_user with the user_id from payload
   def load_current_user!
     @current_user = User.find_by(id: payload[0]['user_id'])
+  end
+
+  def load_current_celeb!
+    @current_celeb = Celeb.find_by(id: payload[0]['celeb_id'])
   end
 end

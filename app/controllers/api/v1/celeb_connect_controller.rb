@@ -1,4 +1,7 @@
 class Api::V1::CelebConnectController < ApplicationController
+
+  include ActionView::Helpers::NumberHelper
+
   before_action :authenticate_celeb_request!
 
   def index

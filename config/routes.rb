@@ -6,6 +6,7 @@
 #              api_v1_user_connect_mode GET    /api/v1/user/connect_mode(.:format)                                                      api/v1/user_celebs#connect_mode
 #                     api_v1_party_mode GET    /api/v1/party_mode(.:format)                                                             api/v1/croosh#party_mode
 #                                api_v1 POST   /api/v1/croosh/:croosh_id/toggle_user_like(.:format)                                     api/v1/croosh#toggle_user_like
+#                                       POST   /api/v1/croosh/:croosh_id/toggle_celeb_like(.:format)                                    api/v1/croosh#toggle_celeb_like
 #                                       POST   /api/v1/croosh/:croosh_id/increment_share(.:format)                                      api/v1/croosh#increment_share
 #                   api_v1_user_profile GET    /api/v1/user/profile(.:format)                                                           api/v1/users#profile
 #        api_v1_user_change_profile_pic POST   /api/v1/user/change_profile_pic(.:format)                                                api/v1/users#change_profile_pic
@@ -13,6 +14,9 @@
 #                                       GET    /api/v1/celeb/:celeb_id/profile(.:format)                                                api/v1/user_celebs#celeb_profile
 #           api_v1_celeb_session_create POST   /api/v1/celeb_session/create(.:format)                                                   api/v1/celeb_session#create
 #            api_v1_celeb_connect_index GET    /api/v1/celeb_connect/index(.:format)                                                    api/v1/celeb_connect#index
+#             api_v1_celeb_connect_show GET    /api/v1/celeb_connect/show(.:format)                                                     api/v1/celeb_connect#show
+#         api_v1_celeb_profile_pic_show GET    /api/v1/celeb_profile_pic/show(.:format)                                                 api/v1/celeb_profile_pic#show
+#                         api_v1_croosh POST   /api/v1/croosh(.:format)                                                                 api/v1/croosh#create
 #         rails_mandrill_inbound_emails POST   /rails/action_mailbox/mandrill/inbound_emails(.:format)                                  action_mailbox/ingresses/mandrill/inbound_emails#create
 #         rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                  action_mailbox/ingresses/postmark/inbound_emails#create
 #            rails_relay_inbound_emails POST   /rails/action_mailbox/relay/inbound_emails(.:format)                                     action_mailbox/ingresses/relay/inbound_emails#create
@@ -80,7 +84,7 @@ Rails.application.routes.draw do
 
       get 'celeb_profile_pic/show'
 
-      post 'croosh/create'
+      post 'croosh', to: 'croosh#create'
 
     end
   end

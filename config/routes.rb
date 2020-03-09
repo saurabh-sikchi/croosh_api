@@ -62,6 +62,7 @@ Rails.application.routes.draw do
       get 'party_mode', to: 'croosh#party_mode'
 
       post 'croosh/:croosh_id/toggle_user_like', to: 'croosh#toggle_user_like'
+      post 'croosh/:croosh_id/toggle_celeb_like', to: 'croosh#toggle_celeb_like'
       post 'croosh/:croosh_id/increment_share', to: 'croosh#increment_share'
 
       get 'user/profile', to: 'users#profile'

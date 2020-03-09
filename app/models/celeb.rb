@@ -18,7 +18,7 @@ class Celeb < ApplicationRecord
   validates :nick, presence: true, uniqueness: true
   validates :rate_per_croosh, numericality: { greater_than: 0 }
 
-  has_many_attached :pics, dependent: :purge
+  has_one_attached :profile_pic, dependent: :purge
   has_one_attached :profile_video, dependent: :purge
 
   has_many :crooshes
@@ -42,10 +42,6 @@ class Celeb < ApplicationRecord
     else
       return celebs.order('celebs.updated_at DESC')
     end
-  end
-
-  def profile_pic
-    pics.first
   end
 
   def known_for_as_string

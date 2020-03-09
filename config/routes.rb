@@ -70,11 +70,14 @@ Rails.application.routes.draw do
 
       get 'celeb/:celeb_id/profile', to: 'user_celebs#celeb_profile'
 
+
+      # Celeb
       post 'celeb_session/create', to: 'celeb_session#create'
 
       get 'celeb_connect/index'
-
       get 'celeb_connect/show'
+
+      get 'celeb_profile_pic/show'
 
     end
   end

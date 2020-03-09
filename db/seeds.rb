@@ -188,7 +188,7 @@ celebs_data.each do |celeb_data|
   celeb.password_confirmation = 'password123'
   celeb.save!
   
-  celeb.pics.attach(io: File.open(path_to_image), filename: image_filename)
+  celeb.profile_pic.attach(io: File.open(path_to_image), filename: image_filename)
 
   if celeb_data[:video]
     path_to_video = Rails.root.join('app/assets').join(celeb_data[:video])

@@ -80,6 +80,8 @@ Rails.application.routes.draw do
 
       get 'celeb_profile_pic/show'
 
+      post 'croosh#create'
+
     end
   end
 end

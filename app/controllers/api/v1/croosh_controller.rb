@@ -2,9 +2,9 @@ class Api::V1::CrooshController < ApplicationController
 
   include ActionView::Helpers::NumberHelper
 
-  before_action :authenticate_user_request!, except: [:party_mode, :toggle_celeb_like]
-  before_action :authenticate_user_or_celeb_request!, only: :party_mode
-  before_action :authenticate_celeb_request!, only: :toggle_celeb_like
+  before_action :authenticate_user_request!, except: [:party_mode, :toggle_celeb_like, :increment_share, :create]
+  before_action :authenticate_user_or_celeb_request!, only: [:party_mode, :increment_share]
+  before_action :authenticate_celeb_request!, only: [:toggle_celeb_like, :create]
 
   def party_mode
     crooshes = Croosh.get_random_for_party_mode(params[:crooshes_already_seen])
@@ -67,6 +67,13 @@ class Api::V1::CrooshController < ApplicationController
       UserShare.create(croosh: croosh, user: @current_user, num: 1)
       render json: { success: true }
     end
+  end
+
+  def create
+    puts "------------------------- #{@current_celeb.id}"
+    puts params
+    puts "-------------------------"
+    render json: { success: true }
   end
 
 end

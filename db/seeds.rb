@@ -247,7 +247,8 @@ if user
     celeb = Celeb.order('RAND()').limit(1).take
     croosh = Croosh.new(c.except(:image))
     croosh.celeb = celeb
-    croosh.to_complete_date = Date.today - 2.days
+    croosh.to_complete_date = Date.today - rand(1..10).days
+    croosh.request_text = "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything."
     croosh.user = User.last
     croosh.user_likes_count = 0 if croosh.user_likes_count.nil?
     v = videos[rand(0...videos.length)]
@@ -286,7 +287,8 @@ celeb = Celeb.find_by nick: 'piggy.chops'
 croosh_data.first(2).each do |c|
   croosh = Croosh.new(c.except(:image))
   croosh.celeb = celeb
-  croosh.to_complete_date = Date.today - 2.days
+  croosh.to_complete_date = Date.today - rand(1..10).days
+  croosh.request_text = "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything."
   croosh.user = User.last
   croosh.user_likes_count = 0 if croosh.user_likes_count.nil?
   v = videos[rand(0...videos.length)]

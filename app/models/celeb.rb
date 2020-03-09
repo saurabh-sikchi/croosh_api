@@ -47,13 +47,13 @@ class Celeb < ApplicationRecord
   def get_crooshes_for_connect(sort_order = 'expiring_first')
     case sort_order
     when 'num_likes'
-      return crooshes.order('(crooshes.user_likes_count + crooshes.celeb_likes_count) DESC')
+      return crooshes.order('is_request ASC, (crooshes.user_likes_count + crooshes.celeb_likes_count) DESC')
     when 'fresh'
-      return crooshes.order('created_at DESC')
+      return crooshes.order('is_request DESC, created_at DESC')
     when 'num_shares'
-      return crooshes.order('user_shares_count DESC')
+      return crooshes.order('is_request ASC, user_shares_count DESC')
     else
-      return crooshes.order('to_complete_date DESC')
+      return crooshes.order('is_request DESC, to_complete_date ASC')
     end
   end
 

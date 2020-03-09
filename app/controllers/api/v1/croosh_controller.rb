@@ -8,13 +8,13 @@ class Api::V1::CrooshController < ApplicationController
 
   def party_mode
     crooshes = Croosh.get_random_for_party_mode(params[:crooshes_already_seen])
-    liked = @current_celeb ? croosh.liked_by_celeb?(@current_celeb) : croosh.liked_by_user?(@current_user)
     data = [].tap do |h|
       crooshes.each do |croosh|
         video_url = asset_url(croosh.video)
         thumbnail = asset_url(croosh.thumbnail)
         celeb = croosh.celeb
         celeb_profile_pic = asset_url(celeb.profile_pic)
+        liked = @current_celeb ? croosh.liked_by_celeb?(@current_celeb) : croosh.liked_by_user?(@current_user)
         h.push({
           croosh_id: croosh.id,
           video_url: video_url,

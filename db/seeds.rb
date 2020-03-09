@@ -262,7 +262,7 @@ if user
   User.all.each do |user|
     3.times do
       celeb = Celeb.order('RAND()').limit(1).take
-      croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0, to_complete_date: (Date.today+15.days), request_text: "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything.")
+      croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0, to_complete_date: (Date.today+rand(1..20).days), request_text: "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything.")
       croosh.save!
       [
         "Request has been sent to #{celeb.name} and we'll keep you posted. Happy Crooshin'!",
@@ -283,7 +283,7 @@ end
 
 celeb = Celeb.find_by nick: 'piggy.chops'
 
-croosh_data.first(4).each do |c|
+croosh_data.first(2).each do |c|
   croosh = Croosh.new(c.except(:image))
   croosh.celeb = celeb
   croosh.to_complete_date = Date.today - 2.days
@@ -298,9 +298,9 @@ croosh_data.first(4).each do |c|
 
 end
 
-User.all.each do |user|
+User.limit(2).each do |user|
   3.times do
-    croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0, to_complete_date: (Date.today+15.days), request_text: "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything.")
+    croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0, to_complete_date: (Date.today+rand(1..20).days), request_text: "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything.")
     croosh.save!
     [
       "Request has been sent to #{celeb.name} and we'll keep you posted. Happy Crooshin'!",

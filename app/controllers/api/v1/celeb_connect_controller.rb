@@ -5,7 +5,7 @@ class Api::V1::CelebConnectController < ApplicationController
   before_action :authenticate_celeb_request!
 
   def index
-    crooshes = @current_celeb.crooshes.order(created_at: :desc).inject([]) do |h, croosh|
+    crooshes = @current_celeb.get_crooshes_for_connect(params[:sort_order]).inject([]) do |h, croosh|
       rm_inputs = croosh.rm_inputs
       video_url = asset_url(croosh.video)
       thumbnail = asset_url(croosh.thumbnail)

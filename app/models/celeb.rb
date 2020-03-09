@@ -44,6 +44,19 @@ class Celeb < ApplicationRecord
     end
   end
 
+  def get_crooshes_for_connect(sort_order = 'expiring_first')
+    case sort_order
+    when 'num_likes'
+      return crooshes.order('num_likes DESC')
+    when 'fresh'
+      return crooshes.order('created_at DESC')
+    when 'num_shares'
+      return crooshes.order('user_shares_count DESC')
+    else
+      return crooshes.order('to_complete_date DESC')
+    end
+  end
+
   def known_for_as_string
     known_fors.pluck(:name).join(', ')
   end

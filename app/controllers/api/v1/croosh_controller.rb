@@ -2,7 +2,8 @@ class Api::V1::CrooshController < ApplicationController
 
   include ActionView::Helpers::NumberHelper
 
-  before_action :authenticate_user_request!
+  before_action :authenticate_user_request!, except: :party_mode
+  before_action :authenticate_user_or_celeb_request!, only: :party_mode
 
   def party_mode
     crooshes = Croosh.get_random_for_party_mode(params[:crooshes_already_seen])

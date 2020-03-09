@@ -1,4 +1,4 @@
-class CelebProfilePicController < ApplicationController
+class Api::V1::CelebProfilePicController < ApplicationController
 
   before_action :authenticate_celeb_request!
 

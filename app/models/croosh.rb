@@ -20,7 +20,7 @@ class Croosh < ApplicationRecord
   belongs_to :user
 
   has_many :user_likes, dependent: :destroy
-  has_many :celeb_like, dependent: :destroy
+  has_many :celeb_likes, dependent: :destroy
   has_many :user_share, dependent: :destroy
 
   has_one_attached :video, dependent: :purge

@@ -280,3 +280,40 @@ if user
     end
   end
 end
+
+celeb = Celeb.find_by nick: 'piggy.chops'
+
+croosh_data.first(4).each do |c|
+  croosh = Croosh.new(c.except(:image))
+  croosh.celeb = celeb
+  croosh.to_complete_date = Date.today - 2.days
+  croosh.user = User.last
+  croosh.user_likes_count = 0 if croosh.user_likes_count.nil?
+  v = videos[rand(0...videos.length)]
+
+  path_to_video = Rails.root.join('app/assets/celebs_seed').join(v)
+  video_filename = File.basename(path_to_video)
+  croosh.save!
+  croosh.video.attach(io: File.open(path_to_video), filename: video_filename)
+
+end
+
+User.all.each do |user|
+  3.times do
+    croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0, to_complete_date: (Date.today+15.days), request_text: "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything.")
+    croosh.save!
+    [
+      "Request has been sent to #{celeb.name} and we'll keep you posted. Happy Crooshin'!",
+      "#{celeb.name} has accepted the croosh request and we’ll be expecting a croosh soon. Happy crooshin’!",
+      "#{celeb.name} is caught up with some other work at moment, we'll follow up. Relax.",
+    ].each do |update_text|
+      croosh_update = CrooshUpdate.create!(update_text: update_text, croosh: croosh)
+    end
+    [
+      "The guy also requested if you can talk about a surprise he’s planning for her other then this croosh",
+      "Her name is Kiya and she'll be turning 26",
+    ].each do |rm_input_text|
+      RmInput.create!(croosh: croosh, input_text: rm_input_text, name: "Nitin")
+    end
+  end
+end

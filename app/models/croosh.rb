@@ -47,7 +47,7 @@ class Croosh < ApplicationRecord
     user_likes.where(user: user).exists?
   end
 
-  def liked_by_user?(celeb)
+  def liked_by_celeb?(celeb)
     celeb_likes.where(celeb: celeb).exists?
   end
 

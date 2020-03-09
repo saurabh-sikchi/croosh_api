@@ -51,7 +51,7 @@ class Api::V1::CrooshController < ApplicationController
       cl.destroy
       render json: { like: false }
     else
-      UserLike.create(croosh: croosh, celeb: @current_celeb)
+      CelebLike.create(croosh: croosh, celeb: @current_celeb)
       render json: { like: true }
     end
   end

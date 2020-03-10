@@ -32,7 +32,7 @@ class Croosh < ApplicationRecord
   scope :not_requests, -> { where(is_request: false) }
 
   def self.get_random_for_party_mode(crooshes_already_seen = [])
-    celebs = self.not_requests.exclude(crooshes_already_seen).order('RAND()')
+    celebs = self.not_requests.exclude(crooshes_already_seen).limit(20).order('RAND()')
   end
 
   def thumbnail

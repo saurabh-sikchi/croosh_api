@@ -1,321 +1,113 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-videos = [
-  "model-1.mp4",
-  "model-2.mp4",
-  "model-3.mp4",
-  "model-4.mp4",
-  "model-11.mp4",
-]
+# All celebs in celeb_seeds = 10-11
+# All crooshes in croosh_seeds = 40-50
 
 Croosh.destroy_all
 Celeb.destroy_all
+User.destroy_all
 
-# ['Rishab J', 'Mankani', 'Sikchi'].each { |name| User.create!(name: name) }
+# user
+u = User.create!(name: 'Saurabh')
+OtpAuthentication.create!(phone_number: '8446251980', otp: '555', succeeded: true, user: u)
 
-celebs_data = [
-  {
-    name: "Priyank Chopra",
-    image: "celebs_seed/celeb-1.jpg",
-    rate_per_croosh: "15000",
-    ready_to_go_live: true,
-    nick: "piggy.chops",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Nora Fateghi",
-    image: "celebs_seed/celeb-2.jpg",
-    rate_per_croosh: "1500",
-    ready_to_go_live: true,
-    nick: "nora.fatehi",
-    video: "celebs_seed/model-2.mp4"
-  },
-  {
-    name: "Pearl Sharma",
-    image: "celebs_seed/celeb-3.jpg",
-    rate_per_croosh: "5000",
-    ready_to_go_live: true,
-    nick: "iampearl",
-    video: "celebs_seed/model-3.mp4"
-  },
-  {
-    name: "Kid Ink",
-    image: "celebs_seed/celeb-4.jpg",
-    rate_per_croosh: "15000",
-    ready_to_go_live: true,
-    nick: "inky.hashes",
-    video: "celebs_seed/model-4.mp4"
-  },
-  {
-    name: "Badshah",
-    image: "celebs_seed/celeb-5.jpg",
-    rate_per_croosh: " 3000",
-    ready_to_go_live: true,
-    nick: "jumpingkiddo",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Yami Gautam",
-    image: "celebs_seed/celeb-6.jpg",
-    rate_per_croosh: "15000",
-    ready_to_go_live: true,
-    nick: "yami.gautam",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Nayak Chopra",
-    image: "celebs_seed/celeb-7.jpg",
-    rate_per_croosh: "15000",
-    ready_to_go_live: true,
-    nick: "nyka.c",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Katrina kaif",
-    image: "celebs_seed/celeb-8.jpg",
-    rate_per_croosh: "1500",
-    ready_to_go_live: true,
-    nick: "kat.kaif",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Disha Patani",
-    image: "celebs_seed/celeb-9.jpg",
-    rate_per_croosh: " 1000",
-    ready_to_go_live: true,
-    nick: "love.dogs",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Anushka Shetty",
-    image: "celebs_seed/celeb-10.jpg",
-    rate_per_croosh: "2500",
-    ready_to_go_live: true,
-    nick: "anushka.shetty",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Alia Bhatt",
-    image: "celebs_seed/celeb-11.jpg",
-    rate_per_croosh: "5000",
-    ready_to_go_live: true,
-    nick: "bhatt.alia",
-    video: "celebs_seed/model-11.mp4"
-  },
-  {
-    name: "Sonal Chauhan",
-    image: "celebs_seed/celeb-12.jpg",
-    rate_per_croosh: "2000",
-    ready_to_go_live: true,
-    nick: "rajput.sonal",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Shirley Setia",
-    image: "celebs_seed/celeb-13.jpg",
-    rate_per_croosh: "9500",
-    ready_to_go_live: true,
-    nick: "setia.cute",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Dharshan Raval",
-    image: "celebs_seed/celeb-14.jpg",
-    rate_per_croosh: "4000",
-    ready_to_go_live: true,
-    nick: "dharshan.raval",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Kiara Advani",
-    image: "celebs_seed/celeb-15.jpg",
-    rate_per_croosh: "3000",
-    ready_to_go_live: true,
-    nick: "kiara.advani",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Virat Kohli",
-    image: "celebs_seed/celeb-17.jpg",
-    rate_per_croosh: "150000",
-    ready_to_go_live: true,
-    nick: "viral.kohli",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Manish Pandey",
-    image: "celebs_seed/celeb-18.jpg",
-    rate_per_croosh: "25000",
-    ready_to_go_live: true,
-    nick: "manish.pandey",
-    video: "celebs_seed/model-1.mp4"
-  },
-  {
-    name: "Hardik Pandya",
-    image: "celebs_seed/celeb-19.jpg",
-    rate_per_croosh: "75000",
-    ready_to_go_live: true,
-    nick: "karke.aaya",
-    video: "celebs_seed/model-1.mp4"
-  }
-]
-
+# celebs
+cute_names = ["Alvin","Asia","Audi","Bagel","Balou","Barclay","Barney","Beck","Bellatrix","Bianca","Biloxi","Birdie","Biscuit","Blanca","Bobbafett","Bodie","Bono","Booboo","Bootsie","Bordeaux","Brandy","Bren","Bronco","Bruin","Bubbles","Buffy","Burt","Butler","Button","Calvin","Candy","Carter","Cece","Cessa","Chandler","Chaucer","Chevy","China","Choochoo","Cisco","Claire","Cleopatra","Clooney","Coco(nut)","Connor","Cosmo","Crosby","Cupcake","Daisy","Dallas","Daphne","Delilah","Diva","Doc","Domino","Donna","Donovan","Dulus","Dutch","Ebony","Ed","Elton","Elwood","Ernie","Faith","Faya","Felix","Fig","Fiona","Foxy","Fritz","Fuse","Giblet","Gibson","Gingi","Goofy","Graysen","Greystoke","Guinness","Hershey","Holly","Honey","Huck Finn","Hudson","Hutch","Ike","Indira","Iris","Ivory","Jade","Jasmine","Jasper","Jazzy","Jeeves","Jenna","Jenne","Joy","Kai","Kalua","Kaly","Kassie","Kaya","Keanna","Keesha","Keiko","Kiefer","Kingston","Koby","Kona","Laguna","Landon","Larissa","Lefty","Leia","Lexi","Lil’bit","Lilypie","Linus","Logan","Lola","Luca","Lucy","Luke","Madonna","Malble","Malibu","Margo","Marshmellow","Marti","Max","Maya","Meadow","Mercedes","Merlot","Merry","Mia","Midnight","Midori","Mika","Milan","Mira","Mischa","Mitzi","Moby","Mochi","Monet","Monkey","Mooshie","Mozart","Mr Big","Muggles","Mulder","Mulligan","Murphy","Mylo","Nanda","Nate","Nell","Niana","Nico","Noodle","Nugget","Olive","Onyx","Otis","Owen","Ozzie","Paddington","Paisley","Paris","Parker","Paulie","Pazzo","Peanut","Pearl","Pepper","Persia","Pesci","Phoenix","Picasso","Pinot","Pipsie","Pixie","Porche","Quattro","Ramona","Redford","Reece","Rico","Robin Hood","Rocco","Rocky","Romeo","Roxie","Rufus","Rusty","Scotty","Scout","Shadow","Shaggy","Shane","Shaq","Sheba","Silas","Skip","Skitty","Skyler","Smitty","Snooky","Snoopy","Sookie","Spark","Sprite","Stitch","Strsky","Sugar","Summer","Sunny","Sushi","Sweetpea","Syrah","Tallulah","Tango","Tank","Tanner","Tatertot","Theo","Tibbs","Timber","Tink","Toast","Toffee","Tonka","Vegas","Wednesday","Wilbur","Willow","Winnie","Wolfie","Yoshiko","Zach","Zara"]
+rates = [ 1500, 1000, 10_000, 50_000, 200_000, 30_000, 20_000, 3000, 4000, 5000, 7000, 150_000, 45_000, 6000 ]
 known_fors = [
-  'Amazing TV star',
-  "World's greatest wrestler",
-  "Being a friend of Sikchi",
-  "Not known for jack",
-  "Attempting to overthrow the burgeois",
-  "Watching Rick and Morty 17 times",
-  "Being a generally nice person"
+  "Being cute x 10",
+  "Being really cute x 50",
+  "Being too cute x 100",
+  "Being cute and adorable x 500",
+  "Being cuddly x 1000",
+  "Being a good boy x 5000",
+  "Being the best girl x 10000",
 ]
 
-celebs_data.each do |celeb_data|
-  path_to_image = Rails.root.join('app/assets').join(celeb_data[:image])
-  image_filename = File.basename(path_to_image)
-
+Dir.foreach('app/assets/celeb_seeds') do |dirname|
+  next if dirname == '.' or dirname == '..'
   
-  celeb = Celeb.new(celeb_data.except(:image, :video))
+  profile_video, profile_pic = nil, nil
+  Dir.foreach('app/assets/celeb_seeds/' + dirname) do |filename|
+    next if filename == '.' or filename == '..'
+    if filename.end_with?('.mp4')
+      profile_video = Rails.root.join("app/assets/celeb_seeds").join(dirname).join(filename)
+    elsif filename.end_with?('jpg')
+      profile_pic = Rails.root.join("app/assets/celeb_seeds").join(dirname).join(filename)
+    else
+      puts "Some error in celeb seeds video/pic attach"
+    end 
+  end
+  
+  name = cute_names[rand(0...cute_names.size)] + ' ' + cute_names[rand(0...cute_names.size)]
+  nick = name.downcase.split(' ').join('.')
+  rate = rates[rand(0...rates.size)]
+
+  celeb = Celeb.new(name: name, nick: nick, rate_per_croosh: rate)
 
   celeb.known_for = known_fors[rand(0...known_fors.length)]
   celeb.password = 'password123'
   celeb.password_confirmation = 'password123'
   celeb.save!
   
-  celeb.profile_pic.attach(io: File.open(path_to_image), filename: image_filename)
+  celeb.profile_pic.attach(io: File.open(profile_pic), filename: File.basename(profile_pic))
+  celeb.profile_video.attach(io: File.open(profile_video), filename: File.basename(profile_video))
 
-  if celeb_data[:video]
-    path_to_video = Rails.root.join('app/assets').join(celeb_data[:video])
-    video_filename = File.basename(path_to_video)
-    celeb.profile_video.attach(io: File.open(path_to_video), filename: video_filename)
-  end
+  puts celeb.nick
+end
+
+
+req_texts = [
+  "It's my girlfriend's first year anniversary at the gym. Help her with a pep talk please.",
+  "Just want to connect with you :)",
+  "My brother has joined a theatre group. Give him a hearty congrats and wish him luck.",
+  "I ran 10km today. Thanks to your inspiration. Would love a kudos from you.",
+  "You are sooooooo amazing. Make a video for me please."
+]
+
+# completed crooshes
+Dir.foreach('app/assets/croosh_seeds') do |vid_path|
+  next if vid_path == '.' or vid_path == '..'
+
+  celeb = Celeb.order('RAND()').limit(1).take
+  req_text = req_texts[rand(0...req_texts.size)]
+  to_complete_date = Date.today - rand(4..40).days
+  croosh = Croosh.create!(
+    celeb: celeb,
+    to_complete_date: to_complete_date,
+    request_text: req_text,
+    user: u,
+    created_at: to_complete_date - rand(4..14).days
+  )
+
+  path_to_video = Rails.root.join("app/assets/croosh_seeds").join(vid_path)
+  croosh.video.attach(io: File.open(path_to_video), filename: File.basename(path_to_video))
 
 end
 
-user = User.first
+# not completed crooshes
 
-if user
-  croosh_data = [
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    },
-    {
-      created_at: "Jun 22, 2020",
-    }
-  ];
+Celeb.all.each do |celeb|
+  req_text = req_texts[rand(0...req_texts.size)]
+  to_complete_date = Date.today + rand(4..40).days
+  croosh = Croosh.create!(
+    celeb: celeb,
+    to_complete_date: to_complete_date,
+    request_text: req_text,
+    user: u,
+    created_at: Date.yesterday,
+    is_request: true
+  )
 
-  croosh_data.each do |c|
-    celeb = Celeb.order('RAND()').limit(1).take
-    croosh = Croosh.new(c.except(:image))
-    croosh.celeb = celeb
-    croosh.to_complete_date = Date.today - rand(1..10).days
-    croosh.request_text = "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything."
-    croosh.user = User.last
-    croosh.user_likes_count = 0 if croosh.user_likes_count.nil?
-    v = videos[rand(0...videos.length)]
-
-    path_to_video = Rails.root.join('app/assets/celebs_seed').join(v)
-    video_filename = File.basename(path_to_video)
-    croosh.save!
-    croosh.video.attach(io: File.open(path_to_video), filename: video_filename)
-
+  [
+    "Request has been sent to #{celeb.name} and we'll keep you posted. Happy Crooshin'!",
+    "#{celeb.name} has accepted the croosh request and we’ll be expecting a croosh soon. Happy crooshin’!",
+    "#{celeb.name} is caught up with some other work at moment, we'll follow up. Relax.",
+  ].each do |update_text|
+    croosh_update = CrooshUpdate.create!(update_text: update_text, croosh: croosh)
   end
-
-  User.all.each do |user|
-    3.times do
-      celeb = Celeb.order('RAND()').limit(1).take
-      croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0, to_complete_date: (Date.today+rand(1..20).days), request_text: "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything.")
-      croosh.save!
-      [
-        "Request has been sent to #{celeb.name} and we'll keep you posted. Happy Crooshin'!",
-        "#{celeb.name} has accepted the croosh request and we’ll be expecting a croosh soon. Happy crooshin’!",
-        "#{celeb.name} is caught up with some other work at moment, we'll follow up. Relax.",
-      ].each do |update_text|
-        croosh_update = CrooshUpdate.create!(update_text: update_text, croosh: croosh)
-      end
-      [
-        "The guy also requested if you can talk about a surprise he’s planning for her other then this croosh",
-        "Her name is Kiya and she'll be turning 26",
-      ].each do |rm_input_text|
-        RmInput.create!(croosh: croosh, input_text: rm_input_text, name: "Nitin")
-      end
-    end
-  end
-end
-
-celeb = Celeb.find_by nick: 'piggy.chops'
-
-croosh_data.first(2).each do |c|
-  croosh = Croosh.new(c.except(:image))
-  croosh.celeb = celeb
-  croosh.to_complete_date = Date.today - rand(1..10).days
-  croosh.request_text = "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything."
-  croosh.user = User.last
-  croosh.user_likes_count = 0 if croosh.user_likes_count.nil?
-  v = videos[rand(0...videos.length)]
-
-  path_to_video = Rails.root.join('app/assets/celebs_seed').join(v)
-  video_filename = File.basename(path_to_video)
-  croosh.save!
-  croosh.video.attach(io: File.open(path_to_video), filename: video_filename)
-
-end
-
-User.limit(2).each do |user|
-  3.times do
-    croosh = Croosh.new(is_request: true, celeb: celeb, user: user, user_likes_count: 0, to_complete_date: (Date.today+rand(1..20).days), request_text: "Wish My Wife her 2nd Anniversary. Her favorite song of yours is moonlight. She also loves our dog Bonnie a lot and likes to play with him. I’d be glad if you can make it special for her. My name is Nitin btw and I love her more than anything.")
-    croosh.save!
-    [
-      "Request has been sent to #{celeb.name} and we'll keep you posted. Happy Crooshin'!",
-      "#{celeb.name} has accepted the croosh request and we’ll be expecting a croosh soon. Happy crooshin’!",
-      "#{celeb.name} is caught up with some other work at moment, we'll follow up. Relax.",
-    ].each do |update_text|
-      croosh_update = CrooshUpdate.create!(update_text: update_text, croosh: croosh)
-    end
-    [
-      "The guy also requested if you can talk about a surprise he’s planning for her other then this croosh",
-      "Her name is Kiya and she'll be turning 26",
-    ].each do |rm_input_text|
-      RmInput.create!(croosh: croosh, input_text: rm_input_text, name: "Nitin")
-    end
+  [
+    "The guy also requested if you can talk about a surprise he’s planning for her other then this croosh",
+    "Her name is Kiya and she'll be turning 26",
+  ].each do |rm_input_text|
+    RmInput.create!(croosh: croosh, input_text: rm_input_text, name: "Nitin")
   end
 end

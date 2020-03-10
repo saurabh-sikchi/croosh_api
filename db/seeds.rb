@@ -41,7 +41,7 @@ Dir.foreach('app/assets/celeb_seeds') do |dirname|
   nick = name.downcase.split(' ').join('.')
   rate = rates[rand(0...rates.size)]
 
-  celeb = Celeb.new(name: name, nick: nick, rate_per_croosh: rate)
+  celeb = Celeb.new(name: name, nick: nick, rate_per_croosh: rate, ready_to_go_live: true)
 
   celeb.known_for = known_fors[rand(0...known_fors.length)]
   celeb.password = 'password123'

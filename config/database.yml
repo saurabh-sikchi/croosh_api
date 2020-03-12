@@ -52,8 +52,11 @@ test:
 staging:
   <<: *default
   database: croosh_api_staging
-  username: deploy
-  password: Crooshdb
+  # username: deploy
+  # password: Crooshdb
+  host: croosh-db.ccyqocjx2etx.ap-south-1.rds.amazonaws.com
+  username: cardupdev
+  password: bhLMgFP2DAHCnSiUFlbB
 production:
   <<: *default
   database: croosh_api_production

@@ -1,4 +1,4 @@
-class Api::V1::CelebProfilePicController < ApplicationController
+class Api::V1::UserProfilePicController < ApplicationController
 
   before_action :authenticate_user_request!
 

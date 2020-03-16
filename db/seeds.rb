@@ -116,8 +116,8 @@ idx = 0
 names = [
   'Suhana Tyagi',
   'Avneet Singh',
-  'Priya Raj',
   'Zubair Malik',
+  'Priya Raj',
   'Rishi Kapoor',
 ]
 

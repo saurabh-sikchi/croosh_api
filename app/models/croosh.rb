@@ -37,7 +37,7 @@ class Croosh < ApplicationRecord
 
   def thumbnail
     if video.present?
-      return video.preview(resize: "200x200")
+      return video.preview(resize: "600x600")
     else
       return celeb.profile_pic
     end

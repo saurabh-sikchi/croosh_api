@@ -79,7 +79,7 @@ class Api::V1::CrooshController < ApplicationController
   end
 
   def create_croosh_request
-    puts "params = #{params}"
+    Rails.logger.info "params = #{params}"
     croosh = Croosh.create!(
       celeb_id: params[:celeb_id],
       to_complete_date: params[:to_complete_date],

@@ -77,6 +77,8 @@ Rails.application.routes.draw do
 
       get 'user_profile_pic/show'
 
+      post 'create_croosh_request', to: 'croosh#create_croosh_request'
+
 
       # Celeb
       post 'celeb_session/create', to: 'celeb_session#create'

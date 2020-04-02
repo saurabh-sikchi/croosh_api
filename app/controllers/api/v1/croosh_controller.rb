@@ -70,12 +70,29 @@ class Api::V1::CrooshController < ApplicationController
   end
 
   def create
-    croosh = Croosh.find(params[:croosh_id])
-    croosh.video.attach(params[:video])
-    croosh.is_request = false
-    croosh.save!
+    croosh = Croosh.create!(
+      celeb_id: params[:celeb_id],
+      to_complete_date: params[:to_complete_date],
+      request_text: params[:request_text],
+      user: @current_user,
+      created_at: Date.today,
+      is_request: true
+    )
 
-    render json: { success: true }
+    render json: { success: true, croosh_id: croosh.id }
+  end
+
+  def user_create
+    celeb = Celeb.find params[:celeb_id]
+    to_complete_date = params[:to_complete_date]
+    croosh = Croosh.create!(
+      is_request: true, 
+      user: @current_user, 
+      celeb: celeb, 
+      to_complete_date: to_complete_date,
+      request_text: params[:request_text]
+    )
+    render json: { success: true, croosh_id: croosh.id }
   end
 
 end

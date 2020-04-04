@@ -83,7 +83,7 @@ class Api::V1::CrooshController < ApplicationController
   def create_croosh_request
     Rails.logger.info "params = #{params}"
     Razorpay::Payment.fetch(params[:razorpay_payment_id]).capture({
-      amount: params[:amount]
+      amount: params[:amount].to_i
     })
     croosh = Croosh.create!(
       celeb_id: params[:celeb_id],
@@ -111,8 +111,9 @@ class Api::V1::CrooshController < ApplicationController
   end
 
   def order_token
+    Rails.logger.info "params = #{params}"
     options = { 
-      amount: params[:amount], 
+      amount: params[:amount].to_i, 
       currency: 'INR', 
       receipt: SecureRandom.alphanumeric(24), 
       payment_capture: '0'

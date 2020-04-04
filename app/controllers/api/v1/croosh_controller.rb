@@ -82,6 +82,9 @@ class Api::V1::CrooshController < ApplicationController
 
   def create_croosh_request
     Rails.logger.info "params = #{params}"
+    Razorpay::Payment.fetch(params[:razorpay_payment_id]).capture({
+      amount: params[:amount]
+    })
     croosh = Croosh.create!(
       celeb_id: params[:celeb_id],
       to_complete_date: params[:to_complete_date],

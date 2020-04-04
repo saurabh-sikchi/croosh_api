@@ -114,7 +114,7 @@ class Api::V1::CrooshController < ApplicationController
       receipt: SecureRandom.alphanumeric(24), 
       payment_capture: '0'
     }
-    order = Razorpay::Order.create
+    order = Razorpay::Order.create(options)
     render json: {
       order_token: order.order_id,
       amount: order.amount,

@@ -123,7 +123,6 @@ class Api::V1::CrooshController < ApplicationController
     render json: {
       order_token: order.id,
       amount: order.amount,
-      email: @current_user.email
     }
   end
 

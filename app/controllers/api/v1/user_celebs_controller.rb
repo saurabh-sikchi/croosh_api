@@ -15,6 +15,7 @@ class Api::V1::UserCelebsController < ApplicationController
           name: celeb.name,
           nick: celeb.nick,
           rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', lakh: 'l'  } ),
+          rate_per_croosh_in_paisa: celeb.rate_per_croosh * 100,
           profile_pic: link_to_profile_pic
         }
       end

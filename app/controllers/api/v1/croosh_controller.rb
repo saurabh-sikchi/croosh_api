@@ -25,6 +25,7 @@ class Api::V1::CrooshController < ApplicationController
           celeb_name: celeb.name,
           celeb_nick: celeb.nick,
           celeb_rate_per_croosh: number_to_human(celeb.rate_per_croosh, precision: 2, format: "%n%u", units: { thousand: 'k', lakh: 'l'  } ),
+          rate_per_croosh_in_paisa: celeb.rate_per_croosh * 100,
           celeb_profile_pic: celeb_profile_pic,
           celeb_id: celeb.id,
           liked: liked

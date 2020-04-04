@@ -121,7 +121,7 @@ class Api::V1::CrooshController < ApplicationController
     }
     order = Razorpay::Order.create(options)
     render json: {
-      order_token: order.order_id,
+      order_token: order.id,
       amount: order.amount,
       email: @current_user.email
     }

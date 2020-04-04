@@ -12,6 +12,9 @@
 #        api_v1_user_change_profile_pic POST   /api/v1/user/change_profile_pic(.:format)                                                api/v1/users#change_profile_pic
 #               api_v1_user_change_name POST   /api/v1/user/change_name(.:format)                                                       api/v1/users#change_name
 #                                       GET    /api/v1/celeb/:celeb_id/profile(.:format)                                                api/v1/user_celebs#celeb_profile
+#          api_v1_user_profile_pic_show GET    /api/v1/user_profile_pic/show(.:format)                                                  api/v1/user_profile_pic#show
+#          api_v1_create_croosh_request POST   /api/v1/create_croosh_request(.:format)                                                  api/v1/croosh#create_croosh_request
+#             api_v1_croosh_order_token POST   /api/v1/croosh/order_token(.:format)                                                     api/v1/croosh#order_token
 #           api_v1_celeb_session_create POST   /api/v1/celeb_session/create(.:format)                                                   api/v1/celeb_session#create
 #            api_v1_celeb_connect_index GET    /api/v1/celeb_connect/index(.:format)                                                    api/v1/celeb_connect#index
 #             api_v1_celeb_connect_show GET    /api/v1/celeb_connect/show(.:format)                                                     api/v1/celeb_connect#show
@@ -78,6 +81,8 @@ Rails.application.routes.draw do
       get 'user_profile_pic/show'
 
       post 'create_croosh_request', to: 'croosh#create_croosh_request'
+
+      post 'croosh/order_token'
 
 
       # Celeb

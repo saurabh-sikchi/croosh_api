@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class Api::V1::CrooshController < ApplicationController
 
   include ActionView::Helpers::NumberHelper
@@ -103,6 +105,21 @@ class Api::V1::CrooshController < ApplicationController
       request_text: params[:request_text]
     )
     render json: { success: true, croosh_id: croosh.id }
+  end
+
+  def order_token
+    options = { 
+      amount: params[:amount], 
+      currency: 'INR', 
+      receipt: SecureRandom.alphanumeric(24), 
+      payment_capture: '0'
+    }
+    order = Razorpay::Order.create
+    render json: {
+      order_token: order.order_id,
+      amount: order.amount,
+      email: @current_user.email
+    }
   end
 
 end

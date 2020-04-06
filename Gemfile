@@ -52,3 +52,7 @@ gem "mini_magick"
 gem "aws-sdk-s3", require: false
 
 gem 'razorpay'
+
+gem 'sprockets', '~>3.0'
+# gem "administrate"
+gem 'rails_admin'

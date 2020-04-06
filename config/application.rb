@@ -36,5 +36,11 @@ module CrooshApi
     config.time_zone = 'Mumbai'
 
     config.cdn_host = "https://d3cz03zi0ohvtt.cloudfront.net/"
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Flash
+    config.middleware.use Rack::MethodOverride
+    config.middleware.use ActionDispatch::Session::CookieStore, {:key=>"_croosh_api_session"}
+
   end
 end

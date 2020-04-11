@@ -52,7 +52,6 @@ class OtpAuthentication < ApplicationRecord
   private
 
   def self.get_random_otp
-    return 555 if Rails.env.staging?
     rand(100..999)
   end
 

@@ -6,7 +6,7 @@ class SmsClient
   API_ENDPOINT = "https://api.msg91.com/api/v2/sendsms"
   
   def self.send_sms(to:, text:)
-    return true if Rails.env.development?
+    return true if Rails.env.development? || to == '0123456789'
 
     url = URI(API_ENDPOINT)
 

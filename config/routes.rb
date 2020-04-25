@@ -96,6 +96,8 @@ Rails.application.routes.draw do
 
       post 'croosh', to: 'croosh#create'
 
+      post 'celeb/onboarding_form', to: 'celeb#create'
+
     end
   end
 end

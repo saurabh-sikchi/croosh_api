@@ -56,3 +56,5 @@ gem 'razorpay'
 gem 'sprockets', '~>3.0'
 # gem "administrate"
 gem 'rails_admin'
+
+gem 'literate_randomizer'
